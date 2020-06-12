@@ -6,6 +6,26 @@ import '../styles/style.css';
     Latter contains the buttons and a changing number 
 */
 
+
+class HeaderBox extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            header: 'Counter',
+            paragraph: 'Change the number by clicking buttons'
+        }
+    }
+
+    render() {
+        return (
+            <div className='headerBox'>
+                <h1 className='header'>{this.state.header}</h1>
+                <p className='explainer'>{this.state.paragraph}</p>
+            </div>
+        )
+    }
+}
+
 class CounterScreen extends React.Component {
     constructor(props) {
         super(props)
@@ -54,38 +74,13 @@ class CounterScreen extends React.Component {
     }
 }
 
-class HeaderBox extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            header: 'Counter',
-            paragraph: 'Change the number by clicking buttons'
-        }
-    }
 
-    render() {
-        return (
-            <div className='headerBox'>
-                <h1 className='header'>{this.state.header}</h1>
-                <p className='explainer'>{this.state.paragraph}</p>
-            </div>
-        )
-    }
-}
-
+// CarList returns a table in english or finnish depending on which language is wanted
 class CarList extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            header: 'Counter',
-            paragraph: 'Change the number by clicking buttons'
-        }
-    }
-
-
-    createList = (source) => {
-        for (let i = 0; i < source; i++) {
-
+            language: 'en'
         }
     }
 
@@ -99,13 +94,22 @@ class CarList extends React.Component {
             { manufacturer: 'Lamborghini', model: 'Aventador', color: 'orange' }
         ]
 
-        return (
+        const lang = {
+            manufacturerEn: 'Manufacturer',
+            modelEn: 'Model',
+            colorEn: 'Color',
+            manufacturerFi: 'Merkki',
+            modelFi: 'Malli',
+            colorFi: 'Väri'
+        }
+
+        const carTable = (man, model, col) => (
             <div>
                 <table id='carList'>
                     <tr>
-                        <th>Manufacturer</th>
-                        <th>Model</th>
-                        <th>Color</th>
+                        <th>{man}</th>
+                        <th>{model}</th>
+                        <th>{col}</th>
                     </tr>
                     <tr>
                         <th>{carList[0].manufacturer}</th>
@@ -135,6 +139,19 @@ class CarList extends React.Component {
                 </table>
             </div>
         )
+
+        if (this.state.language == 'en') {
+            return carTable(lang.manufacturerEn, lang.modelEn, lang.colorEn)
+        }
+
+        if (this.state.language == 'fi') {
+            return carTable(lang.manufacturerFi, lang.modelFi, lang.colorFi)
+        }
+
+        else {
+            return carTable(lang.manufacturerEn, lang.modelEn, lang.colorEn)
+        }
+
     }
 }
 
