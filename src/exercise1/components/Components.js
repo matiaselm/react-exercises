@@ -140,11 +140,11 @@ class CarList extends React.Component {
             </div>
         )
 
-        if (this.state.language == 'en') {
+        if (this.state.language === 'en') {
             return carTable(lang.manufacturerEn, lang.modelEn, lang.colorEn)
         }
 
-        if (this.state.language == 'fi') {
+        if (this.state.language === 'fi') {
             return carTable(lang.manufacturerFi, lang.modelFi, lang.colorFi)
         }
 
