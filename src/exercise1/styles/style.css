@@ -25,3 +25,10 @@
     margin: 0.5ch;
     flex: 1;
 }
+
+#carList{
+    text-align: left;
+    min-width: 20ch;
+
+    list-style-position: inside;
+}

@@ -73,5 +73,70 @@ class HeaderBox extends React.Component {
     }
 }
 
+class CarList extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            header: 'Counter',
+            paragraph: 'Change the number by clicking buttons'
+        }
+    }
 
-export { CounterScreen, HeaderBox }
+
+    createList = (source) => {
+        for (let i = 0; i < source; i++) {
+
+        }
+    }
+
+    render() {
+
+        const carList = [
+            { manufacturer: 'Citroën', model: 'C5 Aircross', color: 'white' },
+            { manufacturer: 'Toyota', model: 'Avensis', color: 'green' },
+            { manufacturer: 'Tesla', model: 'Cybertruck', color: 'grey' },
+            { manufacturer: 'Lexus', model: 'LFA', color: 'yellow' },
+            { manufacturer: 'Lamborghini', model: 'Aventador', color: 'orange' }
+        ]
+
+        return (
+            <div>
+                <table id='carList'>
+                    <tr>
+                        <th>Manufacturer</th>
+                        <th>Model</th>
+                        <th>Color</th>
+                    </tr>
+                    <tr>
+                        <th>{carList[0].manufacturer}</th>
+                        <th>{carList[0].model}</th>
+                        <th>{carList[0].color}</th>
+                    </tr>
+                    <tr>
+                        <th>{carList[1].manufacturer}</th>
+                        <th>{carList[1].model}</th>
+                        <th>{carList[1].color}</th>
+                    </tr>
+                    <tr>
+                        <th>{carList[2].manufacturer}</th>
+                        <th>{carList[2].model}</th>
+                        <th>{carList[2].color}</th>
+                    </tr>
+                    <tr>
+                        <th>{carList[3].manufacturer}</th>
+                        <th>{carList[3].model}</th>
+                        <th>{carList[3].color}</th>
+                    </tr>
+                    <tr>
+                        <th>{carList[4].manufacturer}</th>
+                        <th>{carList[4].model}</th>
+                        <th>{carList[4].color}</th>
+                    </tr>
+                </table>
+            </div>
+        )
+    }
+}
+
+
+export { CounterScreen, HeaderBox, CarList }

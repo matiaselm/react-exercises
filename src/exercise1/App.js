@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { CounterScreen, HeaderBox } from './components/Components.js'
+import { CounterScreen, HeaderBox, CarList } from './components/Components.js'
 
 function App() {
   return (
@@ -9,8 +9,10 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
 
-        <HeaderBox />
+        <HeaderBox header="Counter1" />
         <CounterScreen />
+        <CarList />
+
 
         <a
           className="App-link"
