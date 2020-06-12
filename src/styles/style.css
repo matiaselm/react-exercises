@@ -1,24 +1,27 @@
+.headerBox{
+    color: aqua;
+}
+
 .counterBox{
-    background-color: tomato;
-    display: flex;
-    flex-direction: column;
-}
-
-.counterHeader{
-    color: black;
-    flex: 1;
-}
-
-.buttonContainer{
-    flex: 1;
+    min-height: 5ch;
+    min-width: 16ch;
+    background-color: white;
     display: flex;
     flex-direction: row;
-}
-
-.counterButton{
-    flex: 1;
+    border-radius: 1ch;
 }
 
 .counterNumber{
+    font-size: 3ch;
+    flex: 1;
+}
+
+.counterButton{
+    border-radius: 0.5ch;
+    background-color: aqua;
+    color: black;
+    font-size: 2ch;
+    font-weight: bold;
+    margin: 0.5ch;
     flex: 1;
 }
