@@ -9,9 +9,9 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
 
-        <HeaderBox header="Counter1" />
+        <HeaderBox header="Counter1" paragraph="Click the buttons to change the number" />
         <CounterScreen />
-        <CarList />
+        <CarList language='fi' />
 
 
         <a
