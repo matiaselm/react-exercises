@@ -87,39 +87,43 @@ const CarList = (props) => {
         colorFi: 'Väri'
     }
 
+
+    // I worked on making this part less repetitive with some for loop-function but I couldn't get it to work so currently I'll just keep this hard coded like so
     const carTable = (man, model, col) => (
         <div>
             <table id='carList'>
-                <tr>
-                    <th>{man}</th>
-                    <th>{model}</th>
-                    <th>{col}</th>
-                </tr>
-                <tr>
-                    <th>{carList[0].manufacturer}</th>
-                    <th>{carList[0].model}</th>
-                    <th>{carList[0].color}</th>
-                </tr>
-                <tr>
-                    <th>{carList[1].manufacturer}</th>
-                    <th>{carList[1].model}</th>
-                    <th>{carList[1].color}</th>
-                </tr>
-                <tr>
-                    <th>{carList[2].manufacturer}</th>
-                    <th>{carList[2].model}</th>
-                    <th>{carList[2].color}</th>
-                </tr>
-                <tr>
-                    <th>{carList[3].manufacturer}</th>
-                    <th>{carList[3].model}</th>
-                    <th>{carList[3].color}</th>
-                </tr>
-                <tr>
-                    <th>{carList[4].manufacturer}</th>
-                    <th>{carList[4].model}</th>
-                    <th>{carList[4].color}</th>
-                </tr>
+                <tbody>
+                    <tr>
+                        <th>{man}</th>
+                        <th>{model}</th>
+                        <th>{col}</th>
+                    </tr>
+                    <tr>
+                        <td>{carList[0].manufacturer}</td>
+                        <td>{carList[0].model}</td>
+                        <td>{carList[0].color}</td>
+                    </tr>
+                    <tr>
+                        <td>{carList[1].manufacturer}</td>
+                        <td>{carList[1].model}</td>
+                        <td>{carList[1].color}</td>
+                    </tr>
+                    <tr>
+                        <td>{carList[2].manufacturer}</td>
+                        <td>{carList[2].model}</td>
+                        <td>{carList[2].color}</td>
+                    </tr>
+                    <tr>
+                        <td>{carList[3].manufacturer}</td>
+                        <td>{carList[3].model}</td>
+                        <td>{carList[3].color}</td>
+                    </tr>
+                    <tr>
+                        <td>{carList[4].manufacturer}</td>
+                        <td>{carList[4].model}</td>
+                        <td>{carList[4].color}</td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     )
