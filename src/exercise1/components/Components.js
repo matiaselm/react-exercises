@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/style.css';
 
 /*  React components for exercise stack A
@@ -19,35 +19,35 @@ const HeaderBox = (props) => {
     )
 }
 
-class CounterScreen extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            counter: 0,
-            color: 'rgba(0,0,0,1)'
-        }
-    }
+const CounterScreen = () => {
+    const [counter, setCounter] = useState(0);
+    const [color, setColor] = useState('rgba(0,0,0,1)')
 
     // buttonClicked takes a boolean as a parameter depending on which button was pressed, + or -
-    buttonClicked(btnBoolean) {
+    const buttonClicked = (btnBoolean) => {
         let i = 0
+        console.log(`Button clicked, i = ${i}`)
         switch (btnBoolean) {
             case (true):    // if the pressed button was "+"
-                i = this.state.counter + 1
-                this.setState({ counter: i })
+                i = counter + 1
+                setCounter(i)
+
+                console.log(`Counter value = ${counter}`)
                 if (i < 0) {
-                    this.setState({ color: 'rgba(255,0,0,1)' })
+                    setColor('rgba(255,0,0,1)')
                 } else {
-                    this.setState({ color: 'rgba(0,0,0,1)' })
+                    setColor('rgba(0,0,0,1)')
                 } break;
 
             case (false):   // if the pressed button was "-"
-                i = this.state.counter - 1
-                this.setState({ counter: i })
+                i = counter - 1
+                setCounter(i)
+
+                console.log(`Counter value = ${counter}`)
                 if (i < 0) {
-                    this.setState({ color: 'rgba(255,0,0,1)' })
+                    setColor('rgba(255,0,0,1)')
                 } else {
-                    this.setState({ color: 'rgba(0,0,0,1)' })
+                    setColor('rgba(0,0,0,1)')
                 } break;
 
             default:    // if there was something else than a boolean as function param
@@ -56,15 +56,14 @@ class CounterScreen extends React.Component {
         }
     }
 
-    render() {
-        return (
-            <div className='counterBox'>
-                <button className='counterButton' onClick={() => this.buttonClicked(false)}> - </button>
-                <h2 className='counterNumber' style={{ color: this.state.color }} >{this.state.counter}</h2>
-                <button className='counterButton' onClick={() => this.buttonClicked(true)}> + </button>
-            </div>
-        )
-    }
+
+    return (
+        <div className='counterBox'>
+            <button className='counterButton' onClick={() => buttonClicked(false)}> - </button>
+            <h2 className='counterNumber' style={{ color: color }} >{counter}</h2>
+            <button className='counterButton' onClick={() => buttonClicked(true)}> + </button>
+        </div>
+    )
 }
 
 
