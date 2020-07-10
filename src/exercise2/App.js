@@ -1,11 +1,11 @@
 import React from 'react';
 import './styles/style.css';
-import { UserTable } from './components/Components.js'
+import { InputField } from './components/Components.js'
 
 function App() {
     return (
         <div className="App">
-            <UserTable />
+            <InputField />
 
         </div >
     );
