@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 /*
 Nippu B (15p)
@@ -98,14 +98,12 @@ const UserMap = (props) => {
 
 const UserTable = () => {
 
-    const [list, setList] = useState([])
-
-    setList(userList)
+    const [refresh, setRefresh] = useState(true)
 
     return (
         <>
             <InputField />
-            <UserMap userlist={list} />
+            <UserMap userlist={userList} />
         </>
     )
 }
