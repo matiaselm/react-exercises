@@ -22,21 +22,29 @@ Nippu B (15p)
 
 // InputField contains 3 input fields for the user to fill; their name, address and city. After saving their info, it is saved to the array
 
-let userList = []
+let userList = [{
+    name: 'Matias',
+    address: 'meme',
+    city: 'janakkala'
+}]
 
 const InputField = () => {
 
-    const nameField = document.getElementById('name')
-    const addressField = document.getElementById('address')
-    const cityField = document.getElementById('city')
-
     const saveUser = () => {
+
+        const nameField = document.getElementById('name')
+        const addressField = document.getElementById('address')
+        const cityField = document.getElementById('city')
+
+        //console.log('are the fields null: ' + nameField.value + addressField.value + cityField.value)
+
         const clearFields = () => {
             nameField.value = ''
             addressField.value = ''
             cityField.value = ''
         }
 
+        //console.log('save user: ' + nameField.value)
         if (nameField.value.length > 0 && addressField.value.length > 0 && cityField.value.length > 0) {
 
             userList.unshift({
@@ -46,13 +54,14 @@ const InputField = () => {
             })
 
             clearFields()
-            console.log(`userList: ${userList[0].name}`)
+            console.log(`userList: ${userList}`)
         } else {
             alert('Please input text to all of the fields')
         }
     }
 
-    const inputField = (
+
+    return (
         <>
             <input type="text" id="name" name="name" placeholder="Name" /><br></br>
             <input type="text" id="address" name="address" placeholder="Address" /><br></br>
@@ -60,8 +69,6 @@ const InputField = () => {
             <input type="submit" value="Save" onClick={saveUser} />
         </>
     )
-
-    return inputField
 }
 
 const UserInfo = (props) => {
@@ -78,7 +85,8 @@ const UserInfo = (props) => {
 
 const UserMap = (props) => {
 
-    console.log(`UserMap list: ${props.userlist}`)
+    // userlist is given from props. It holds the global variable userList that is supposed to update whenever there are new users added
+    // userlist.map((user)=>...) creates as many HTML-elements as there are user-type objects on the list and shows them on the page as UserInfo-components
 
     return (
         <>
@@ -98,12 +106,21 @@ const UserMap = (props) => {
 
 const UserTable = () => {
 
-    const [refresh, setRefresh] = useState(true)
+    const [list, setList] = useState(userList)
+
+    console.log(`UserTable list: ${list}`)
+    useEffect(() => {
+        console.log("useEffect, list: " + list)
+        setList(userList)
+    })
+
+    // InputField is only the 3 different textFields with a button to save the information on those fields
+    // UserMap shows all info on the list assigned to it on the page.
 
     return (
         <>
             <InputField />
-            <UserMap userlist={userList} />
+            <UserMap userlist={list} />
         </>
     )
 }
