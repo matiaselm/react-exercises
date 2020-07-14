@@ -26,7 +26,13 @@ Nippu B (15p)
 
 const InputField = () => {
 
-    const [userlist, setUserlist] = useState([])
+    const [userlist, setUserlist] = useState([
+        {
+            name: 'Matias',
+            address: 'Tapialantie 247',
+            city: 'Janakkala'
+        }
+    ])
 
     const handleListChange = () => {
         console.log(`handleListchange list: ${userlist}`)
@@ -53,11 +59,13 @@ const InputField = () => {
 
         if (nameField.value.length > 0 && addressField.value.length > 0 && cityField.value.length > 0) {
 
-            userlist.unshift({
+            const user = {
                 name: `${nameField.value}`,
                 address: `${addressField.value}`,
                 city: `${cityField.value}`
-            })
+            }
+
+            userlist.push(user)
 
             clearFields()
             //console.log(`userList: ${userlist}`)
@@ -90,8 +98,8 @@ const InputField = () => {
                     <tbody>
                         <tr><th>Name</th><th>Address</th></tr>
                         {
-                            props.userlist.map((user) =>
-                                <UserInfo user={user} />
+                            props.userlist.map((user, i) =>
+                                <UserInfo user={user} key={i} />
                             )
                         }
                     </tbody>
@@ -114,7 +122,6 @@ const InputField = () => {
         </>
     )
 }
-
 
 export {
     InputField
