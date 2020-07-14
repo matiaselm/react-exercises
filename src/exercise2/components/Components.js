@@ -27,11 +27,7 @@ Nippu B (15p)
 const InputField = () => {
 
     const [userlist, setUserlist] = useState([
-        {
-            name: 'Matias',
-            address: 'Tapialantie 247',
-            city: 'Janakkala'
-        }
+
     ])
 
     const handleListChange = () => {
@@ -65,11 +61,12 @@ const InputField = () => {
                 city: `${cityField.value}`
             }
 
-            userlist.push(user)
+            //userlist.concat(user)
 
             clearFields()
             //console.log(`userList: ${userlist}`)
-            handleListChange()
+            //handleListChange()
+            setUserlist(userlist.concat(user))
         } else {
             alert('Please input text to all of the fields')
         }
@@ -118,7 +115,7 @@ const InputField = () => {
             <input type="text" id="city" name="city" placeholder="City" /><br></br>
             <input type="submit" value="Save" onClick={saveUser} />
 
-            <UserMap userlist={userlist} onChange={handleListChange} />
+            <UserMap userlist={userlist} handleListChange={handleListChange} />
         </>
     )
 }
