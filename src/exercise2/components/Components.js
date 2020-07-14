@@ -78,16 +78,27 @@ const InputField = () => {
 
         return (
             <>
-                <table>
-                    <tbody>
-                        <tr><th>Name</th><th>Address</th></tr>
+                {userlist.length < 5 ? <table>
+                    <tbody class='borderless'>
+                        <tr class='borderless'><th class='borderless'>Name</th><th class='borderless'>Address</th><th class='borderless'>Users: {userlist.length}</th></tr>
                         {
                             props.userlist.map((user, i) =>
-                                <UserInfo user={user} key={i} />
+                                <UserInfo class='borderless' user={user} key={i} />
                             )
                         }
                     </tbody>
-                </table>
+                </table> :
+                    <table class='border'>
+                        <tbody class='border'>
+                            <tr class='border'><th class='border'>Name</th><th class='border'>Address</th><th class='border'> || Users: {userlist.length}</th></tr>
+                            {
+                                props.userlist.map((user, i) =>
+                                    <UserInfo class='border' user={user} key={i} />
+                                )
+                            }
+                        </tbody>
+                    </table>
+                }
             </>
         )
     }
