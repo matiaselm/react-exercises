@@ -81,7 +81,6 @@ const InputField = () => {
             <tr>
                 <td>{props.user.name}</td>
                 <td>{props.user.address}</td>
-                <td>Index: {props.index}</td>
                 <td>
                     <button onClick={() => setUserlist(remove(userlist, props.index))}>Delete</button>
                 </td>
@@ -98,7 +97,7 @@ const InputField = () => {
 
         const theTable = (renderStyle) => {
             return (
-                <table>
+                <table className={renderStyle}>
                     <tbody className={renderStyle}>
                         <tr className={renderStyle}><th className={renderStyle}>Name</th><th className={renderStyle}>Address</th><th className={renderStyle}>Users: {userlist.length}</th></tr>
                         {
