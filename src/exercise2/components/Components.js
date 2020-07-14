@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 /*
 Nippu B (15p)
@@ -26,20 +26,7 @@ Nippu B (15p)
 
 const InputField = () => {
 
-    const [userlist, setUserlist] = useState([
-
-    ])
-
-    const handleListChange = () => {
-        console.log(`handleListchange list: ${userlist}`)
-        setUserlist(userlist)
-    }
-
-    useEffect(() => {
-        handleListChange()
-    })
-
-    //console.log(`UserTable list: ${list}`)
+    const [userlist, setUserlist] = useState([])
 
     const saveUser = () => {
 
@@ -61,11 +48,9 @@ const InputField = () => {
                 city: `${cityField.value}`
             }
 
-            //userlist.concat(user)
-
             clearFields()
-            //console.log(`userList: ${userlist}`)
-            //handleListChange()
+
+            // If we want the table on site to update whenewer a new user is added, we need to use this '.concat()' method
             setUserlist(userlist.concat(user))
         } else {
             alert('Please input text to all of the fields')
@@ -86,8 +71,10 @@ const InputField = () => {
 
     const UserMap = (props) => {
 
-        // userlist is given from props. It holds the global variable userList that is supposed to update whenever there are new users added
-        // userlist.map((user)=>...) creates as many HTML-elements as there are user-type objects on the list and shows them on the page as UserInfo-components
+        /*
+        - userlist is given from props. It holds the global variable userList that is supposed to update whenever there are new users added
+        - userlist.map((user)=>...) creates as many HTML-elements as there are user-type objects on the list and shows them on the page as UserInfo-components
+        */
 
         return (
             <>
@@ -105,8 +92,10 @@ const InputField = () => {
         )
     }
 
-    // InputField is only the 3 different textFields with a button to save the information on those fields
-    // UserMap shows all info on the list assigned to it on the page.
+    /* 
+        - InputField is only the 3 different textFields with a button to save the information on those fields
+        - UserMap shows all info on the list assigned to it on the page.
+    */
 
     return (
         <>
@@ -115,7 +104,7 @@ const InputField = () => {
             <input type="text" id="city" name="city" placeholder="City" /><br></br>
             <input type="submit" value="Save" onClick={saveUser} />
 
-            <UserMap userlist={userlist} handleListChange={handleListChange} />
+            <UserMap userlist={userlist} />
         </>
     )
 }
