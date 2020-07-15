@@ -21,10 +21,8 @@ Nippu B (15p)
     > Kun käyttäjä painaa OK-painiketta, viestikomponentti poistuu näkyviltä.
 */
 
-// InputField contains 3 input fields for the user to fill; their name, address and city. After saving their info, it is saved to the array
-
 const firstLetterToUppercase = (text) => {
-    // For those browsers that won't support .trim()
+    // For those browsers that don't support .trim()
     if (!String.prototype.trim) {
         String.prototype.trim = () => {   // This creates a warning
             return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
@@ -39,16 +37,17 @@ const firstLetterToUppercase = (text) => {
 
 const DropDownMenu = (props) => {
 
-    // Button reads whatever the user has chosen from the menu using this state hook
-    const [title, setTitle] = useState(props.title)
-    const [visible, setVisible] = useState(false)
+    const [title, setTitle] = useState(props.title) // Button reads whatever the user has chosen from the menu using this state hook
+    const [visible, setVisible] = useState(false) // Manages the visibility of the dropdown menu
 
+    // When an user clicks on a city from the dropdown
     const select = (selected, index) => {
         setTitle(selected)
         console.log(`Selected '${selected}' at index: ${index}`)
         setVisible(false)
     }
 
+    // When an user clicks on the button to open the dropdown menu
     const open = () => {
         console.log('Toggled dropdown visibility')
         setVisible(!visible)
@@ -73,6 +72,11 @@ const DropDownMenu = (props) => {
 
     return menu
 }
+
+/*
+    - InputField contains 3 input fields for the user to fill; their name, address and city. 
+    - After saving their info, it is saved to the array
+*/
 
 const InputField = () => {
 
