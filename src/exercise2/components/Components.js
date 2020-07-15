@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+
 /*
 Nippu B (15p)
 
@@ -23,20 +24,52 @@ Nippu B (15p)
 // InputField contains 3 input fields for the user to fill; their name, address and city. After saving their info, it is saved to the array
 
 const firstLetterToUppercase = (text) => {
+    // For those browsers that won't support .trim()
     if (!String.prototype.trim) {
         String.prototype.trim = () => {
             return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
         };
     }
-    let trimmed = text.trim()
+    let trimmed = text.trim() // Trimming makes sure there's no whitespaces in the input
 
+    // .toUpperCase() returns the first letter in the string, .slice(1) returns everything else in the string after that
     let textFormatted = trimmed[0].toUpperCase() + trimmed.slice(1)
     return textFormatted
+}
+
+const DropDownMenu = (props) => {
+
+    const select = (index) => {
+        return console.log(`Selected at index: ${index}`)
+    }
+
+    const menu = (
+        <>
+            <div className='dropdown'>
+                <button onClick={console.log('Button clicked')} className='dropbtn'>Dropdown</button>
+                <div id='citiesDropdown' className='dropdown-content'>
+                    {props.list.map((cityname, index) =>
+                        <button className='listbtn' key={index} onClick={() => select(index)}>{cityname}</button>
+                    )}
+                </div>
+            </div>
+        </>
+    )
+
+    return menu
 }
 
 const InputField = () => {
 
     const [userlist, setUserlist] = useState([])
+
+    const citylist = [
+        'Espoo',
+        'Helsinki',
+        'Vantaa',
+        'Turku',
+        'Tampere',
+    ]
 
     const saveUser = () => {
 
@@ -137,6 +170,7 @@ const InputField = () => {
             <input type="text" id="name" name="name" placeholder="Name" /><br></br>
             <input type="text" id="address" name="address" placeholder="Address" /><br></br>
             <input type="text" id="city" name="city" placeholder="City" /><br></br>
+            <DropDownMenu list={citylist}>Eyy</DropDownMenu>
             <input type="submit" value="Save" onClick={saveUser} />
 
             <UserMap userlist={userlist} />
