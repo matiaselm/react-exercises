@@ -47,16 +47,10 @@ const DropDownMenu = (props) => {
         setVisible(false)
     }
 
-    // When an user clicks on the button to open the dropdown menu
-    const open = () => {
-        console.log('Toggled dropdown visibility')
-        setVisible(!visible)
-    }
-
     const menu = (
         <>
             <div className='dropdown'>
-                <button id='dropbtn' value={title} onClick={() => open()}>{title}</button>
+                <button id='dropbtn' value={title} onClick={() => setVisible(!visible)}>{title}</button>
                 <div id='citiesDropdown' className='dropdown-content'>
                     {visible ? props.list.map((cityname, index) =>
                         <button className='listbtn' key={index} onClick={() => select(cityname, index)}>{cityname}</button>
@@ -99,7 +93,6 @@ const InputField = () => {
         const clearFields = () => {
             nameField.value = ''
             addressField.value = ''
-            dropbtn.setTitle = 'City'
         }
 
         if (nameField.value.length > 0 && addressField.value.length > 0 && dropbtn.value !== 'City') {
@@ -121,7 +114,6 @@ const InputField = () => {
         }
     }
 
-
     // remove is a function to delete an item from an array in a given index that returns that array without the removed item
     const remove = (array, index) => {
         console.log(`Removing from index ${index}`)
@@ -138,9 +130,6 @@ const InputField = () => {
     }
 
     const UserInfo = (props) => {
-
-        // console.log(`UserInfo props: ${props}`)
-
         return (
             <tr>
                 <td>{props.user.name}</td>
@@ -190,10 +179,10 @@ const InputField = () => {
     return (
         <>
             <div id='inputFields'>
-                <input class="textInput" type="text" id="name" name="name" placeholder="Name" /><br></br>
-                <input class="textInput" type="text" id="address" name="address" placeholder="Address" /><br></br>
+                <input className="textInput" type="text" id="name" name="name" placeholder="Name" /><br></br>
+                <input className="textInput" type="text" id="address" name="address" placeholder="Address" /><br></br>
                 <DropDownMenu title='Select city ⏬' list={citylist} />
-                <input type="submit" value="Save" onClick={saveUser} />
+                <input id='savebutton' type="submit" value="Save" onClick={saveUser} />
             </div>
             <UserMap userlist={userlist} />
         </>

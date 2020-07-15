@@ -14,37 +14,39 @@
 #inputFields{
     box-sizing: border-box;
     background-color: khaki;
-
     border: black solid 2px;
     padding: 1ch;
     width: 20ch;
 }
 
 .textInput {
+    box-sizing: border-box;
     position: relative;
-    width: 20ch;
+    width: 100%;
 }
 
 #dropbtn{
     position: relative;
     box-sizing: border-box;
     cursor: pointer;
-    width: 20ch;
+    width: 100%;
     border: grey solid 1px;
     background-color: white;
     margin-top: 0.5ch;
     padding: 0.5ch;
+    text-align: left;
 }
 
-#dropbtn:hover, #dropbtn:focus{
-    background-color: darkgray
+#dropbtn:hover{
+    background-color: lightblue;
 }
 
 #dropdown {
+    
+    width: 100%;
     position: relative;
 }
 
-/* Dropdown Content (Hidden by Default) */
 .dropdown-content{
     display: block;
     box-sizing: border-box;
@@ -53,21 +55,33 @@
     min-width: 20ch;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    
 }
 
 /* Buttons inside the dropdown */
 .listbtn{
     color: black;
-    border: none;
+    border: solid lightgrey 1px;
     background-color: white;
     width: 100%;
     text-decoration: none;
     display: block;
     padding: 0.5ch;
+    text-align: left;
 }
 
 .listbtn:hover {
     cursor: pointer;
     background-color: lightblue;
-    padding: 1ch;
+    padding-top: 1ch;
+    padding-bottom: 1ch;
+    /*padding-left: none;*/
+}
+
+#savebutton {
+    box-sizing: border-box;
+    position: relative;
+    margin-top: 0.5ch;
+    width: 50%;
+    cursor: pointer;
 }
