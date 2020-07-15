@@ -39,17 +39,20 @@ const firstLetterToUppercase = (text) => {
 
 const DropDownMenu = (props) => {
 
-    const select = (index) => {
-        return console.log(`Selected at index: ${index}`)
+    const [title, setTitle] = useState(props.title)
+
+    const select = (selected, index) => {
+        setTitle(selected)
+        console.log(`Selected '${selected}' at index: ${index}`)
     }
 
     const menu = (
         <>
             <div className='dropdown'>
-                <button onClick={console.log('Button clicked')} className='dropbtn'>Dropdown</button>
+                <button id='dropbtn' onClick={() => console.log('dropbtn clicked')}>{title}</button>
                 <div id='citiesDropdown' className='dropdown-content'>
                     {props.list.map((cityname, index) =>
-                        <button className='listbtn' key={index} onClick={() => select(index)}>{cityname}</button>
+                        <button className='listbtn' key={index} onClick={() => select(cityname, index)}>{cityname}</button>
                     )}
                 </div>
             </div>
@@ -170,7 +173,7 @@ const InputField = () => {
             <input type="text" id="name" name="name" placeholder="Name" /><br></br>
             <input type="text" id="address" name="address" placeholder="Address" /><br></br>
             <input type="text" id="city" name="city" placeholder="City" /><br></br>
-            <DropDownMenu list={citylist}>Eyy</DropDownMenu>
+            <DropDownMenu title='City' list={citylist} />
             <input type="submit" value="Save" onClick={saveUser} />
 
             <UserMap userlist={userlist} />
