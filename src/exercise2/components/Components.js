@@ -39,6 +39,7 @@ const firstLetterToUppercase = (text) => {
 
 const DropDownMenu = (props) => {
 
+    // Button reads whatever the user has chosen from the menu using this state hook
     const [title, setTitle] = useState(props.title)
 
     const select = (selected, index) => {
@@ -49,7 +50,7 @@ const DropDownMenu = (props) => {
     const menu = (
         <>
             <div className='dropdown'>
-                <button id='dropbtn' onClick={() => console.log('dropbtn clicked')}>{title}</button>
+                <button id='dropbtn' value={title} onClick={() => console.log('dropbtn clicked')}>{title}</button>
                 <div id='citiesDropdown' className='dropdown-content'>
                     {props.list.map((cityname, index) =>
                         <button className='listbtn' key={index} onClick={() => select(cityname, index)}>{cityname}</button>
@@ -78,20 +79,23 @@ const InputField = () => {
 
         const nameField = document.getElementById('name')
         const addressField = document.getElementById('address')
-        const cityField = document.getElementById('city')
+        // const cityField = document.getElementById('city')
+
+        const dropbtn = document.getElementById('dropbtn')
 
         const clearFields = () => {
             nameField.value = ''
             addressField.value = ''
-            cityField.value = ''
         }
 
-        if (nameField.value.length > 0 && addressField.value.length > 0 && cityField.value.length > 0) {
+        if (nameField.value.length > 0 && addressField.value.length > 0 && dropbtn.value !== 'City') {
+
+            console.log('Button value: ' + dropbtn.value)
 
             const user = {
                 name: `${firstLetterToUppercase(nameField.value)}`,
                 address: `${firstLetterToUppercase(addressField.value)}`,
-                city: `${firstLetterToUppercase(cityField.value)}`
+                city: `${dropbtn.value}`
             }
 
             clearFields()
@@ -99,7 +103,7 @@ const InputField = () => {
             // If we want the table on site to update whenewer a new user is added, we need to use this '.concat()' method
             setUserlist(userlist.concat(user))
         } else {
-            alert('Please input text to all of the fields')
+            alert('Please input all asked information')
         }
     }
 
@@ -127,6 +131,7 @@ const InputField = () => {
             <tr>
                 <td>{props.user.name}</td>
                 <td>{props.user.address}</td>
+                <td>{props.user.city}</td>
                 <td>
                     <button onClick={() => setUserlist(remove(userlist, props.index))}>Delete</button>
                 </td>
@@ -145,7 +150,7 @@ const InputField = () => {
             return (
                 <table className={renderStyle}>
                     <tbody className={renderStyle}>
-                        <tr className={renderStyle}><th className={renderStyle}>Name</th><th className={renderStyle}>Address</th><th className={renderStyle}>Users: {userlist.length}</th></tr>
+                        <tr className={renderStyle}><th className={renderStyle}>Name</th><th className={renderStyle}>Address</th><th>City</th><th className={renderStyle}>Users: {userlist.length}</th></tr>
                         {
                             props.userlist.map((user, i) =>
                                 <UserInfo className={renderStyle} user={user} key={i} index={i} />
@@ -172,7 +177,6 @@ const InputField = () => {
         <>
             <input type="text" id="name" name="name" placeholder="Name" /><br></br>
             <input type="text" id="address" name="address" placeholder="Address" /><br></br>
-            <input type="text" id="city" name="city" placeholder="City" /><br></br>
             <DropDownMenu title='City' list={citylist} />
             <input type="submit" value="Save" onClick={saveUser} />
 
