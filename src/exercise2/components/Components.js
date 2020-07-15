@@ -185,11 +185,12 @@ const InputField = () => {
 
     return (
         <>
-            <input type="text" id="name" name="name" placeholder="Name" /><br></br>
-            <input type="text" id="address" name="address" placeholder="Address" /><br></br>
-            <DropDownMenu title='City' list={citylist} />
-            <input type="submit" value="Save" onClick={saveUser} />
-
+            <div id='inputFields'>
+                <input class="textInput" type="text" id="name" name="name" placeholder="Name" /><br></br>
+                <input class="textInput" type="text" id="address" name="address" placeholder="Address" /><br></br>
+                <DropDownMenu title='Select city ⏬' list={citylist} />
+                <input type="submit" value="Save" onClick={saveUser} />
+            </div>
             <UserMap userlist={userlist} />
         </>
     )
