@@ -26,7 +26,7 @@ Nippu B (15p)
 const firstLetterToUppercase = (text) => {
     // For those browsers that won't support .trim()
     if (!String.prototype.trim) {
-        String.prototype.trim = () => {
+        String.prototype.trim = () => {   // This creates a warning
             return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
         };
     }
@@ -41,20 +41,31 @@ const DropDownMenu = (props) => {
 
     // Button reads whatever the user has chosen from the menu using this state hook
     const [title, setTitle] = useState(props.title)
+    const [visible, setVisible] = useState(false)
 
     const select = (selected, index) => {
         setTitle(selected)
         console.log(`Selected '${selected}' at index: ${index}`)
+        setVisible(false)
+    }
+
+    const open = () => {
+        console.log('Toggled dropdown visibility')
+        setVisible(!visible)
     }
 
     const menu = (
         <>
             <div className='dropdown'>
-                <button id='dropbtn' value={title} onClick={() => console.log('dropbtn clicked')}>{title}</button>
+                <button id='dropbtn' value={title} onClick={() => open()}>{title}</button>
                 <div id='citiesDropdown' className='dropdown-content'>
-                    {props.list.map((cityname, index) =>
+                    {visible ? props.list.map((cityname, index) =>
                         <button className='listbtn' key={index} onClick={() => select(cityname, index)}>{cityname}</button>
-                    )}
+                    ) :
+                        <>
+                        </>
+                    }
+
                 </div>
             </div>
         </>
@@ -79,13 +90,12 @@ const InputField = () => {
 
         const nameField = document.getElementById('name')
         const addressField = document.getElementById('address')
-        // const cityField = document.getElementById('city')
-
         const dropbtn = document.getElementById('dropbtn')
 
         const clearFields = () => {
             nameField.value = ''
             addressField.value = ''
+            dropbtn.setTitle = 'City'
         }
 
         if (nameField.value.length > 0 && addressField.value.length > 0 && dropbtn.value !== 'City') {
