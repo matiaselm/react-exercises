@@ -22,7 +22,17 @@ Nippu B (15p)
 
 // InputField contains 3 input fields for the user to fill; their name, address and city. After saving their info, it is saved to the array
 
+const firstLetterToUppercase = (text) => {
+    if (!String.prototype.trim) {
+        String.prototype.trim = () => {
+            return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
+        };
+    }
+    let trimmed = text.trim()
 
+    let textFormatted = trimmed[0].toUpperCase() + trimmed.slice(1)
+    return textFormatted
+}
 
 const InputField = () => {
 
@@ -43,9 +53,9 @@ const InputField = () => {
         if (nameField.value.length > 0 && addressField.value.length > 0 && cityField.value.length > 0) {
 
             const user = {
-                name: `${nameField.value}`,
-                address: `${addressField.value}`,
-                city: `${cityField.value}`
+                name: `${firstLetterToUppercase(nameField.value)}`,
+                address: `${firstLetterToUppercase(addressField.value)}`,
+                city: `${firstLetterToUppercase(cityField.value)}`
             }
 
             clearFields()
