@@ -13,8 +13,6 @@ Nippu B (15p)
 10. Lisää edelliseen jokaiselle riville painike Poista, jolla henkilö voidaan poistaa taulukosta.
 11. Lisää edelliseen tarkistussääntö, joska muuttaa nimikenttään syötetyn tekstin isoiksi kirjaimiksi.
 12. Muuta kaupunkikenttä alasvetovalikoksi, lue sen arvot taulukosta.
-
-----------------------------------------------------------------------------------------------
 13. Lisää edelliseen viestikomponentti, jolla on vakiosisältönä headeri, jossa on jotain tekstiä ja footer, jossa on tekstiä.
     > Tuo sisältö isäkomponentilta vapaana sisältönä childrenin avulla.
 14. Muuta edellinen viestikomponentti siten, että lisää sen footeriin OK-painike.
@@ -25,7 +23,7 @@ Nippu B (15p)
 
 const Message = (props) => {
 
-    const [visible, setVisible] = useState(props.visibility)
+    const [visible, setVisible] = useState(true)
 
     const closePopup = () => {
         console.log('Visibility: ' + visible)
@@ -33,15 +31,19 @@ const Message = (props) => {
     }
 
     return <>
-        {visible ? <> <h1>Hey</h1>
-            <footer id='footer1'> This is the footer
+        {visible ? <div id='messagebox'>
+            <h1>{props.header}</h1>
+            <footer id='footer1'>{props.footer}
                 <button onClick={() => closePopup()}>OK</button>
-            </footer> </> : (
-                <></>
-            )
+            </footer>
+        </div> : <></>
         }
     </>
 }
+
+/*
+    Function that translates the first letter to uppercase
+*/
 
 const firstLetterToUppercase = (text) => {
     // For those browsers that don't support .trim()
@@ -57,6 +59,9 @@ const firstLetterToUppercase = (text) => {
     return textFormatted
 }
 
+/*
+    DropDownMenu-component used to pick a city in the app
+ */
 const DropDownMenu = (props) => {
 
     const [title, setTitle] = useState(props.title) // Button reads whatever the user has chosen from the menu using this state hook
@@ -76,11 +81,7 @@ const DropDownMenu = (props) => {
                 <div id='citiesDropdown' className='dropdown-content'>
                     {visible ? props.list.map((cityname, index) =>
                         <button className='listbtn' key={index} onClick={() => select(cityname, index)}>{cityname}</button>
-                    ) :
-                        <>
-                        </>
-                    }
-
+                    ) : <></>}
                 </div>
             </div>
         </>
@@ -94,7 +95,7 @@ const DropDownMenu = (props) => {
     - After saving their info, it is saved to the array
 */
 
-const InputField = () => {
+const InputFieldWithList = () => {
 
     const [userlist, setUserlist] = useState([])
 
@@ -151,12 +152,12 @@ const InputField = () => {
         }
     }
 
+    // A single element in userMap, shows user's name, address and a button to remove that part from the list
     const UserInfo = (props) => {
         return (
             <tr>
                 <td>{props.user.name}</td>
                 <td>{props.user.address}</td>
-                <td>{props.user.city}</td>
                 <td>
                     <button onClick={() => setUserlist(remove(userlist, props.index))}>Delete</button>
                 </td>
@@ -175,7 +176,7 @@ const InputField = () => {
             return (
                 <table className={renderStyle}>
                     <tbody className={renderStyle}>
-                        <tr className={renderStyle}><th className={renderStyle}>Name</th><th className={renderStyle}>Address</th><th>City</th><th className={renderStyle}>Users: {userlist.length}</th></tr>
+                        <tr className={renderStyle}><th className={renderStyle}>Name</th><th className={renderStyle}>Address</th><th className={renderStyle}>Users: {userlist.length}</th></tr>
                         {
                             props.userlist.map((user, i) =>
                                 <UserInfo className={renderStyle} user={user} key={i} index={i} />
@@ -198,20 +199,21 @@ const InputField = () => {
         - UserMap shows all info on the list assigned to it on the page.
     */
 
+
     return (
         <>
             <div id='inputFields'>
                 <input className="textInput" type="text" id="name" name="name" placeholder="Name" /><br></br>
                 <input className="textInput" type="text" id="address" name="address" placeholder="Address" /><br></br>
-                <DropDownMenu title='Select city ⏬' list={citylist} />
+                <DropDownMenu title='Select city' list={citylist} />
                 <input id='savebutton' type="submit" value="Save" onClick={saveUser} />
             </div>
             <UserMap userlist={userlist} />
-            <Message visibility='true' ></Message>
+            {userlist.length < 5 ? <></> : <Message header='Hello' footer='You have 5 people on this list'></Message>}
         </>
     )
 }
 
 export {
-    InputField
+    InputFieldWithList
 }
