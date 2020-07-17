@@ -13,6 +13,8 @@ Nippu B (15p)
 10. Lisää edelliseen jokaiselle riville painike Poista, jolla henkilö voidaan poistaa taulukosta.
 11. Lisää edelliseen tarkistussääntö, joska muuttaa nimikenttään syötetyn tekstin isoiksi kirjaimiksi.
 12. Muuta kaupunkikenttä alasvetovalikoksi, lue sen arvot taulukosta.
+
+----------------------------------------------------------------------------------------------
 13. Lisää edelliseen viestikomponentti, jolla on vakiosisältönä headeri, jossa on jotain tekstiä ja footer, jossa on tekstiä.
     > Tuo sisältö isäkomponentilta vapaana sisältönä childrenin avulla.
 14. Muuta edellinen viestikomponentti siten, että lisää sen footeriin OK-painike.
@@ -20,6 +22,26 @@ Nippu B (15p)
     > Muuta koodia siten, että tehtävän 9 mukaisessa tilanteessa kun henkilölukumäärä ylittää 5, niin näkyville avautuu ko. viestikomponentti.
     > Kun käyttäjä painaa OK-painiketta, viestikomponentti poistuu näkyviltä.
 */
+
+const Message = (props) => {
+
+    const [visible, setVisible] = useState(props.visibility)
+
+    const closePopup = () => {
+        console.log('Visibility: ' + visible)
+        setVisible(!visible)
+    }
+
+    return <>
+        {visible ? <> <h1>Hey</h1>
+            <footer id='footer1'> This is the footer
+                <button onClick={() => closePopup()}>OK</button>
+            </footer> </> : (
+                <></>
+            )
+        }
+    </>
+}
 
 const firstLetterToUppercase = (text) => {
     // For those browsers that don't support .trim()
@@ -149,7 +171,7 @@ const InputField = () => {
         - userlist.map((user)=>...) creates as many HTML-elements as there are user-type objects on the list and shows them on the page as UserInfo-components
         */
 
-        const theTable = (renderStyle) => {
+        const TheTable = (renderStyle) => {
             return (
                 <table className={renderStyle}>
                     <tbody className={renderStyle}>
@@ -166,7 +188,7 @@ const InputField = () => {
 
         return (
             <>
-                {userlist.length < 5 ? theTable('borderless') : theTable('border')}
+                {userlist.length < 5 ? TheTable('borderless') : TheTable('border')}
             </>
         )
     }
@@ -185,6 +207,7 @@ const InputField = () => {
                 <input id='savebutton' type="submit" value="Save" onClick={saveUser} />
             </div>
             <UserMap userlist={userlist} />
+            <Message visibility='true' ></Message>
         </>
     )
 }
