@@ -1,0 +1,28 @@
+{
+  "people": [
+    {
+      "id": 1,
+      "name": "Matias Jalava",
+      "address": "Siltakuja",
+      "postalNumber": "02770",
+      "city": "Espoo",
+      "phoneNumber": "05077777"
+    },
+    {
+      "id": 2,
+      "name": "Tuomas",
+      "address": "Tapialantie",
+      "postalNumber": "14240",
+      "city": "Janakkala",
+      "phoneNumber": "050555555"
+    },
+    {
+      "id": 3,
+      "name": "Nelli",
+      "address": "Carlanderintie",
+      "postalNumber": "04500",
+      "city": "Kellokoski",
+      "phoneNumber": "0506666666"
+    }
+  ]
+}
