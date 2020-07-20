@@ -8,9 +8,11 @@ import React, { useState, useEffect } from 'react';
 const UserTable = (props) => {
 
     const [list, setList] = useState([])
+    const [searchterm, setSearchterm] = useState(props.searchterm)
 
     useEffect(() => {
-        fetch('http://localhost:3003/people')
+        console.log('Searchterm: ' + searchterm)
+        fetch('http://localhost:3003/people/' + searchterm)
             .then(response => response.json())
             .then((responseData) => {
                 console.log('response fulfilled' + responseData)
@@ -21,10 +23,10 @@ const UserTable = (props) => {
     return (
         <table className={props.className}>
             <tbody className={props.className}>
-                <tr className={props.className}><th className={props.className}>Name</th><th className={props.className}>Address</th><th className={props.className}>Users: {list.length}</th></tr>
+                <tr><th>Name</th><th>Address</th><th>Zip code</th><th>City</th><th>Phone</th></tr>
                 {
                     list.map((user, i) =>
-                        <tr>
+                        <tr key={i}>
                             <td>{user.name}</td>
                             <td>{user.address}</td>
                             <td>{user.postalNumber}</td>
