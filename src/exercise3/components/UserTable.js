@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import UserInfo from './UserInfo.js'
-
 
 /*
 - userlist is given from props. It holds the global variable userList that is supposed to update whenever there are new users added
@@ -26,7 +24,13 @@ const UserTable = (props) => {
                 <tr className={props.className}><th className={props.className}>Name</th><th className={props.className}>Address</th><th className={props.className}>Users: {list.length}</th></tr>
                 {
                     list.map((user, i) =>
-                        <UserInfo className={props.userInfoClass} user={user} key={i} index={i} />
+                        <tr>
+                            <td>{user.name}</td>
+                            <td>{user.address}</td>
+                            <td>{user.postalNumber}</td>
+                            <td>{user.city}</td>
+                            <td>{user.phoneNumber}</td>
+                        </tr>
                     )
                 }
             </tbody>
