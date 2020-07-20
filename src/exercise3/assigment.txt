@@ -2,6 +2,7 @@
     Henkilöllä on seuraavat tiedot: id, nimi, osoite, postinumero, postitoimipaikka, puhelinnro. 
     Käytä REST-api:n toteutukseen json-server NPM pakettia.
 
+starting the server on port 3003: json-server --watch db.json --port 3003
 ---------------------------------------DONE-----------------------------------
 
 16. Tee React-sovellus, jossa voidaan näyttää puhelinluettelo edellisestä rajapinnasta hakien. 

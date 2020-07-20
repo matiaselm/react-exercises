@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import App from './exercise2/App'; // Change exercise-number depending on the app you want to run
+import App from './exercise3/App'; // Change exercise-number depending on the app you want to run
 
 ReactDOM.render(
   <React.StrictMode>
