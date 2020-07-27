@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { UserTable } from './components/UserTable'
-import SearchField from './components/SearchField'
+import axios from 'axios';
+import { UserTable } from './components/UserTable';
+import SearchField from './components/SearchField';
 
 
 const App = () => {
@@ -34,10 +35,9 @@ const App = () => {
             console.log('SearchTerm: ' + searchTerm)
         }
 
-        fetch(searchTerm)
-            .then(response => response.json())
-            .then((responseData) => {
-                setList(responseData)
+        axios.get(searchTerm)
+            .then((response) => {
+                setList(response.data)
             })
     }
 
