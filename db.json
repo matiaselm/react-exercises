@@ -4,25 +4,25 @@
       "id": 1,
       "name": "Matias Jalava",
       "address": "Siltakuja",
-      "postalNumber": "02770",
+      "postalnum": "02770",
       "city": "Espoo",
-      "phoneNumber": "050777777"
+      "phonenum": "050777777"
     },
     {
       "id": 2,
       "name": "Tuomas",
       "address": "Tapialantie",
-      "postalNumber": "14240",
+      "postalnum": "14240",
       "city": "Janakkala",
-      "phoneNumber": "050555555"
+      "phonenum": "050555555"
     },
     {
       "id": 3,
       "name": "Nelli",
       "address": "Carlanderintie",
-      "postalNumber": "04500",
+      "postalnum": "04500",
       "city": "Kellokoski",
-      "phoneNumber": "050666666"
+      "phonenum": "050666666"
     }
   ]
 }

@@ -9,7 +9,10 @@ const UserTable = (props) => {
 
     let list = props.list
 
-    // translates the data to an array before rendering it
+    /* translates the data to an array before rendering it, straight from here:
+        https://dev.to/cilvako/use-this-trick-to-map-over-single-objects-in-javascript-38nb
+    */
+
     if (!Array.isArray(list)) {
         list = [list]
     }
@@ -24,9 +27,9 @@ const UserTable = (props) => {
                             <tr key={i}>
                                 <td>{user.name}</td>
                                 <td>{user.address}</td>
-                                <td>{user.postalNumber}</td>
+                                <td>{user.postalnum}</td>
                                 <td>{user.city}</td>
-                                <td>{user.phoneNumber}</td>
+                                <td>{user.phonenum}</td>
                             </tr>
                         )
                     }

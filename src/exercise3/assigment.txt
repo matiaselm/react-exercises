@@ -6,11 +6,12 @@
 
 16. Tee React-sovellus, jossa voidaan näyttää puhelinluettelo edellisestä rajapinnasta hakien. 
     Esitä henkilöt taulukkomaisesti.
-    ---------------------------------------^DONE^---------------------------------------
     Lisää Hae-painike, joka hakee kaikki henkilöt Restin kautta. 
 
 17. Lisää sovellukseen syöttökentät nimelle ja postinumerolle. 
     Lisää toiminnallisuus, että Hae-painikkeesta painamalla haetaan kyseisiin kenttiin syötettyjen hakuehtojen mukaisesti näkyville henkilöt.
+
+---------------------------------------^DONE^---------------------------------------
 
 18. Lisää backendiin data ja hakurajapinta, jossa on asiakasid, laskunro, laskusumma, laskupäiväys, laskun aihe ja onko maksettu. 
     Lisää sovellukseen puhelinluettelon henkilöiden riville Lasku-painike, jos henkilöllä on laskuja. 
