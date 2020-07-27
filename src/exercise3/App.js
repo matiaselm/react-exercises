@@ -18,20 +18,20 @@ const App = () => {
 
     const fetchUsers = (input) => {
 
-        let searchTerm = 'http://localhost:3003/people'
+        let searchTerm = 'http://localhost:3003/people?'
 
         if (input.id !== '') {
-            searchTerm += '?&id=' + input.id
+            searchTerm += '&id=' + input.id
             console.log('SearchTerm: ' + searchTerm)
         }
 
         if (input.name !== '') {
-            searchTerm += '?&name=' + input.name
+            searchTerm += '&name=' + input.name
             console.log('SearchTerm: ' + searchTerm)
         }
 
         if (input.phone !== '') {
-            searchTerm += '?&phonenum=' + input.phone
+            searchTerm += '&phonenum=' + input.phone
             console.log('SearchTerm: ' + searchTerm)
         }
 
@@ -43,8 +43,7 @@ const App = () => {
 
     const handleSubmit = () => {
         // console.log('App.js handlesubmit: ' + value)
-
-        console.log('Handlesubmit: ' + value.id, value.name, value.phone)
+        // console.log('Handlesubmit: ' + value.id, value.name, value.phone)
 
         fetchUsers(value)
         setValue({
@@ -56,18 +55,12 @@ const App = () => {
 
     const handleChange = (event) => {
         const val = event.target.value
-
         // console.log('handlechange val: ' + val)
-
         // console.log('target name: ' + event.target.name)
-
         setValue({
             ...value,
             [event.target.name]: val
         })
-        // console.log('handelchange value: ' + event.target.value)
-        // setValue(event.target.value)
-
     }
 
     return (
