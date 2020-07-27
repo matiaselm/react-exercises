@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 /*
 - userlist is given from props. It holds the global variable userList that is supposed to update whenever there are new users added
@@ -7,37 +7,38 @@ import React, { useState, useEffect } from 'react';
 
 const UserTable = (props) => {
 
-    const [list, setList] = useState([])
-    const [searchterm, setSearchterm] = useState(props.searchterm)
+    let list = props.list
 
-    useEffect(() => {
-        console.log('Searchterm: ' + searchterm)
-        fetch('http://localhost:3003/people/' + searchterm)
-            .then(response => response.json())
-            .then((responseData) => {
-                console.log('response fulfilled' + responseData)
-                setList(responseData)
-            })
-    }, [])
+    // translates the data to an array before rendering it
+    if (!Array.isArray(list)) {
+        list = [list]
+    }
 
-    return (
-        <table className={props.className}>
-            <tbody className={props.className}>
-                <tr><th>Name</th><th>Address</th><th>Zip code</th><th>City</th><th>Phone</th></tr>
-                {
-                    list.map((user, i) =>
-                        <tr key={i}>
-                            <td>{user.name}</td>
-                            <td>{user.address}</td>
-                            <td>{user.postalNumber}</td>
-                            <td>{user.city}</td>
-                            <td>{user.phoneNumber}</td>
-                        </tr>
-                    )
-                }
-            </tbody>
-        </table>
-    )
+    try {
+        return (
+            <table className={props.className}>
+                <tbody className={props.className}>
+                    <tr><th>Name</th><th>Address</th><th>Zip code</th><th>City</th><th>Phone</th></tr>
+                    {
+                        list.map((user, i) =>
+                            <tr key={i}>
+                                <td>{user.name}</td>
+                                <td>{user.address}</td>
+                                <td>{user.postalNumber}</td>
+                                <td>{user.city}</td>
+                                <td>{user.phoneNumber}</td>
+                            </tr>
+                        )
+                    }
+                </tbody>
+            </table>
+        )
+    } catch {
+        console.log('Error getting data')
+        return (
+            <h1>Error showing the list</h1>
+        )
+    }
 }
 
 export { UserTable }
