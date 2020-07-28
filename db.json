@@ -38,29 +38,7 @@
       "postalnum": "14240",
       "city": "Janakkala",
       "phonenum": "050555555",
-      "bills": [
-        {
-          "id": 1,
-          "sum": 399,
-          "date": "Wed Mar 25 2015 02:00:00 GMT+0200",
-          "topic": "rent",
-          "paid": "false"
-        },
-        {
-          "id": 2,
-          "sum": 2000,
-          "date": "Wed Mar 25 2015 02:00:00 GMT+0200",
-          "topic": "car",
-          "paid": "false"
-        },
-        {
-          "id": 3,
-          "sum": 23,
-          "date": "Wed Mar 25 2015 02:00:00 GMT+0200",
-          "topic": "fishing equipment loan",
-          "paid": "false"
-        }
-      ]
+      "bills": []
     },
     {
       "id": 3,
@@ -79,16 +57,23 @@
         },
         {
           "id": 2,
-          "sum": 2000,
+          "sum": 10,
           "date": "Wed Mar 25 2015 02:00:00 GMT+0200",
-          "topic": "car",
+          "topic": "Something",
           "paid": "false"
         },
         {
           "id": 3,
-          "sum": 23,
+          "sum": 500,
           "date": "Wed Mar 25 2015 02:00:00 GMT+0200",
-          "topic": "fishing equipment loan",
+          "topic": "Student loan",
+          "paid": "false"
+        },
+        {
+          "id": 4,
+          "sum": 10,
+          "date": "Wed Mar 25 2015 02:00:00 GMT+0200",
+          "topic": "Something2",
           "paid": "false"
         }
       ]
