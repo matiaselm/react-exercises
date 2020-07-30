@@ -64,8 +64,6 @@ const App = () => {
         })
     }
 
-
-
     return (
         <div className="App">
             <UserForm></UserForm>

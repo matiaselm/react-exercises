@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 const UserForm = (props) => {
+
     const [user, setUser] = useState({
         name: '',
         address: '',
@@ -8,6 +9,11 @@ const UserForm = (props) => {
         city: '',
         phone: ''
     })
+
+    if (props.user) {
+        console.log('Editing useR: ' + user.name)
+        setUser(props.user)
+    }
 
     const createUser = () => {
         const nameValue = document.getElementById("nameField").value
