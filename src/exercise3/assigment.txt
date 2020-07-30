@@ -11,12 +11,11 @@
 17. Lisää sovellukseen syöttökentät nimelle ja postinumerolle. 
     Lisää toiminnallisuus, että Hae-painikkeesta painamalla haetaan kyseisiin kenttiin syötettyjen hakuehtojen mukaisesti näkyville henkilöt.
 
----------------------------------------^DONE^---------------------------------------
-
 18. Lisää backendiin data ja hakurajapinta, jossa on asiakasid, laskunro, laskusumma, laskupäiväys, laskun aihe ja onko maksettu. 
+---------------------------------------^DONE^---------------------------------------
     Lisää sovellukseen puhelinluettelon henkilöiden riville Lasku-painike, jos henkilöllä on laskuja. 
     Hae tieto keillä on laskuja luettelon renderöinnin jälkeen useEffectillä.
 
 19. Lisää sovellukseen omana komponenttinaan lomake, jossa voi syöttää uusia henkilöitä tai editoida henkilöiden tietoja. 
-    Refaktoroi sovellus siten, että jokainen komponentti on omassa tiedostossaan. 
-    Tästä eteenpäin samassa tiedostossa EI SAA olla useampaa komponenttia! 
+    Refaktoroi sovellus siten, että jokainen komponentti on omassa tiedostossaan.
+    Tästä eteenpäin samassa tiedostossa EI SAA olla useampaa komponenttia!

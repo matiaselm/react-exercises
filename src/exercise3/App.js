@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { UserTable } from './components/UserTable';
 import SearchField from './components/SearchField';
+import { UserForm } from './components/UserForm';
 
 
 const App = () => {
@@ -67,6 +68,7 @@ const App = () => {
 
     return (
         <div className="App">
+            <UserForm></UserForm>
             <SearchField handleChange={handleChange} handleSubmit={handleSubmit} idValue={value.id} phoneValue={value.phone} nameValue={value.name}></SearchField>
             <UserTable list={list} className='userTable'></UserTable>
         </div >
