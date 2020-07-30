@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 
+/*
+    This component holds input fields for creating a new user or modifying an existing one.
+    There's no functionality with back-end as POST methods are not yet implemented for the project, figured they're part of a later exercise
+*/
 const UserForm = (props) => {
-
     const [user, setUser] = useState({
         name: '',
         address: '',
