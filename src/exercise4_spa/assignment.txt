@@ -3,6 +3,8 @@
     - Näytä Kotisivulla tietoja itsestäsi: nimi, sähköposti, oppilatos, ym. mitä muuta haluat kertoa.   
     - Puhelinluettelo-sivulle tulee edellisten tehtävien puhelinluettelon näyttötoiminnot hakuominaisuuksilla.
         - Siellä voi myös muuttaa, poistaa tai lisätä henkilöitä. 
+		---------------------------------^DONE^---------------------------------
+		
     - Laskut-sivulla voi hakea laskuja antamalla henkilön id. 
     - Siellä voi myös lisätä, poistaa tai muuttaa laskuja. 
     - Tässä tehtävässä ei vielä tarvitse tehdä muuta kuin Koti-sivun sisältö, puhelinluettelon aiemmin tehdyn koodin porttaaminen ja sivulta toiselle vaihtaminen.

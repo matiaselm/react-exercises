@@ -97,11 +97,20 @@ const UserTable = (props) => {
         list = [list]
     }
 
+    const modifyUser = (user) => {
+        console.log('Modifying user: ' + user.name);
+    }
+
+    const deleteUser = (user) => {
+        alert('Are you sure you want to delete user ' + user.name + '?');
+        console.log('Deleting user: ' + user.name);
+    }
+
     try {
         return (
             <>
                 <SearchField handleChange={handleChange} handleSubmit={handleSubmit} idValue={value.id} phoneValue={value.phone} nameValue={value.name}></SearchField>
-                <table >
+                <table>
                     <tbody >
                         <tr><th>Name</th><th>Address</th><th>Zip code</th><th>City</th><th>Phone</th></tr>
                         {
@@ -112,11 +121,11 @@ const UserTable = (props) => {
                                     <td>{user.postalnum}</td>
                                     <td>{user.city}</td>
                                     <td>{user.phonenum}</td>
-                                    {user.bills.length > 0 &&
-                                        <td>
-                                            <button value='bills' onClick={() => showBillInformation(user)}>Bills</button>
-                                        </td>
+                                    {user.bills.length > 0 ?
+                                        <td><button value='bills' onClick={() => showBillInformation(user)}>Bills</button></td> : <td></td>
                                     }
+                                    <td><button value='modify' onClick={() => modifyUser(user)}>Modify</button></td>
+                                    <td><button value='delete' onClick={() => deleteUser(user)}>Delete</button></td>
                                 </tr>
                             )
                         }
