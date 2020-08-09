@@ -30,4 +30,4 @@ const BillInformation = (props) => {
     }
 }
 
-export { BillInformation }
+export default BillInformation 

@@ -52,4 +52,4 @@ const UserForm = (props) => {
     </form>
 }
 
-export { UserForm }
+export default UserForm

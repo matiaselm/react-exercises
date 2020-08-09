@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { UserTable } from './components/UserTable';
+import UserTable from './components/UserTable';
 import SearchField from './components/SearchField';
-import { UserForm } from './components/UserForm';
+import UserForm from './components/UserForm';
 
 
 const App = () => {

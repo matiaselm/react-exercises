@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BillInformation } from './BillInformation';
+import BillInformation from './BillInformation';
 
 /*
 - list is given from props. It holds the global variable userList that is supposed to update whenever there are new users added or asked to be shown
@@ -72,4 +72,4 @@ const UserTable = (props) => {
     }
 }
 
-export { UserTable }
+export default UserTable
