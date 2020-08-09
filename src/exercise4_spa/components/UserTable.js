@@ -109,7 +109,7 @@ const UserTable = (props) => {
     try {
         return (
             <>
-                <SearchField handleChange={handleChange} handleSubmit={handleSubmit} idValue={value.id} phoneValue={value.phone} nameValue={value.name}></SearchField>
+                <SearchField type='user' handleChange={handleChange} handleSubmit={handleSubmit} idValue={value.id} phoneValue={value.phone} nameValue={value.name}></SearchField>
                 <table>
                     <tbody >
                         <tr><th>Name</th><th>Address</th><th>Zip code</th><th>City</th><th>Phone</th></tr>
