@@ -31,8 +31,11 @@ const Login = () => {
     const handleSubmit = () => {
         if (checkLogin()) {
             console.log('UserCreds: ' + userCred.name)
-            setUserDetails(userCred.name)
-            console.log('UserContext: ' + userDetails.name)
+            setUserDetails({
+                username: userCred.name,
+                admin: true
+            })
+            console.log('UserContext: ' + userDetails.username)
             setUserCred({ name: '', passwd: '', passwdCheck: '' })
             return
         } else {

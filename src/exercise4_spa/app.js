@@ -8,11 +8,12 @@ import { UserProvider, UserContext, UserDispatchContext } from './contexts/UserC
 
 const App = () => {
 
-    const user = useContext(UserContext)
+    const [user, setUser] = useState(useContext(UserContext))
 
     return (
         <div className="App">
             <UserProvider>
+
                 <Router>
                     <main>
                         <nav>
@@ -20,7 +21,7 @@ const App = () => {
                                 <li><Link to='/'>Home</Link></li>
                                 <li><Link to='/login'>Login</Link></li>
                                 <li><Link to='/usertable'>Users</Link></li>
-                                <li><Link to='/billinformation'>Bills</Link></li>
+                                {user.admin && <li><Link to='/billinformation'>Bills</Link></li>}
                             </ul>
                         </nav>
                         <Route exact path='/' component={Home} />
@@ -29,6 +30,7 @@ const App = () => {
                         <Route path='/billinformation' component={BillInformation} />
                     </main>
                 </Router>
+
             </UserProvider>
         </div >
     );

@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import { App } from './exercise4_spa/app'; // Change exercise-number depending on the app you want to run
-import { UserProvider, UserContext } from './exercise4_spa/contexts/UserContext';
 
 ReactDOM.render(
   <React.StrictMode>

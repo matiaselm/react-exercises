@@ -1,10 +1,13 @@
 import React, { createContext, useState } from 'react';
 
-const UserContext = createContext(undefined);
-const UserDispatchContext = createContext(undefined);
+const UserContext = createContext({});
+const UserDispatchContext = createContext({});
 
 const UserProvider = ({ children }) => {
-    const [userDetails, setUserDetails] = useState('John Doe');
+    const [userDetails, setUserDetails] = useState({
+        username: '',
+        admin: false
+    });
 
     return (
         <UserContext.Provider value={userDetails}>
