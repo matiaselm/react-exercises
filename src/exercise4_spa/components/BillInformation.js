@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import SearchField from './SearchField';
+import UserTable from './UserTable';
 
 /*
     Bill Information is a component that shows selected user's bills in a table
@@ -15,6 +16,8 @@ const BillInformation = (props) => {
         name: '',
         phone: ''
     });
+
+
 
     const [list, setList] = useState([])
 
@@ -59,12 +62,29 @@ const BillInformation = (props) => {
         })
     }
 
-    const exampleBill = {
-        "id": 1,
-        "sum": 399,
-        "date": "Wed Mar 25 2015 02:00:00 GMT+0200",
-        "topic": "rent",
-        "paid": "false"
+    if (props.user) {
+        setValue({
+            id: props.user.id,
+            name: props.user.name,
+            phone: props.user.phone
+        })
+        return fetchUsers(value)
+    }
+
+    const BillTable = (props) => {
+        const user = props.user
+        return <table>
+            <tbody>
+                {user.bills.length > 0 ? <>
+                    <tr><th>Bill Id</th><th>Sum</th><th>Date</th><th>Topic</th></tr>
+                    {user.bills.map((bill, i) => <tr key={i}>
+                        <td>{bill.id}</td>
+                        <td>{bill.sum}</td>
+                        <td>{bill.date}</td>
+                        <td>{bill.topic}</td></tr>)}
+                </> : <>No bills</>}
+            </tbody>
+        </table>
     }
 
     try {
@@ -72,14 +92,10 @@ const BillInformation = (props) => {
             <SearchField type='bill' handleChange={handleChange} handleSubmit={handleSubmit} idValue={value.id}></SearchField>
             <table>
                 <tbody>
-                    <tr><th>Bill Id</th><th>Sum (€)</th><th>Date</th><th>Topic</th><th><button onClick={props.setVisible}>exit</button></th></tr>
-                    {list.map((user, i) =>
-                        <tr key={i}>
-                            <td>{user.bills.id}</td>
-                            <td>{user.bills.sum}</td>
-                            <td>{user.bills.date}</td>
-                            <td>{user.bills.topic}</td>
-                        </tr>)}
+                    {list.map((user, i) => <>
+                        <tr>{user.name}</tr>
+                        <BillTable user={user}></BillTable>
+                    </>)}
                 </tbody>
             </table>
         </div>

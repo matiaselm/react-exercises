@@ -77,13 +77,7 @@ const UserTable = (props) => {
         visibility: false
     })
 
-    const showBillInformation = (currentUser) => {
-        // console.log('Bill status: ' + bill)
-        setBillState({
-            user: currentUser,
-            visibility: true
-        })
-    }
+
 
     const setVisible = () => {
         setBillState({ visibility: false })
@@ -95,6 +89,14 @@ const UserTable = (props) => {
 
     if (!Array.isArray(list)) {
         list = [list]
+    }
+
+    const showBillInformation = (currentUser) => {
+        // console.log('Bill status: ' + bill)
+        setBillState({
+            user: currentUser,
+        })
+        console.log('Showing bill information for user: ' + billState.user);
     }
 
     const modifyUser = (user) => {
