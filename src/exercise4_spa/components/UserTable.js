@@ -43,8 +43,6 @@ const UserTable = (props) => {
         })
     }
 
-
-
     const fetchUsers = (input) => {
 
         let searchTerm = 'http://localhost:3003/people?'
@@ -72,12 +70,11 @@ const UserTable = (props) => {
 
     useEffect(() => fetchUsers(value), [])
 
+    // These 2 for BillInformation visibility on this site, not sure if necessary
     const [billState, setBillState] = useState({
         user: {},
         visibility: false
     })
-
-
 
     const setVisible = () => {
         setBillState({ visibility: false })
@@ -86,13 +83,11 @@ const UserTable = (props) => {
     /* translates the data to an array before rendering it, straight from here:
         https://dev.to/cilvako/use-this-trick-to-map-over-single-objects-in-javascript-38nb
     */
-
     if (!Array.isArray(list)) {
         list = [list]
     }
 
     const showBillInformation = (currentUser) => {
-        // console.log('Bill status: ' + bill)
         setBillState({
             user: currentUser,
         })

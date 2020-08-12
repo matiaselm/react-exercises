@@ -6,7 +6,6 @@
     - Laskut-sivulla voi hakea laskuja antamalla henkilön id. 
     - Siellä voi myös lisätä, poistaa tai muuttaa laskuja. 
     - Tässä tehtävässä ei vielä tarvitse tehdä muuta kuin Koti-sivun sisältö, puhelinluettelon aiemmin tehdyn koodin porttaaminen ja sivulta toiselle vaihtaminen.
-    
 
 21. Toteuta loput Puhelinluettelo-sivun toiminnot: 
     - Henkilötietojen lisäys lomakkeella olevasta painikkeesta, 
@@ -17,10 +16,12 @@
     - Kun hakupainikkeesta painaa, niin sivule renderöidään löydetyt laskut, kaikki kentät.
 
 23. Lisää laskujen syöttö, muuttamis- ja poistotoiminnat samalla periaatteella kuin puhelinluettelon kanssa.
----------------------------------^DONE^--------------------------------
 
 24. Tee kirjautumisnäyttö. 
     - Testaa kovakoodattuja arvoja vasten, onko annettu käyttäjätunnus ja salasana oikeita. 
+
+    ---------------------------------^DONE^--------------------------------
+
     - Jos ne ovat oikein, niin säilytä tieto kirjautuneesta käyttäjästä ja roolista. 
     - Tunnuksen perusteella on kaksi roolia: peruskäyttäjä ja admin. 
     - Voit käyttää talletukseen kontekstia tai localstoragea.
