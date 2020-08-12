@@ -8,6 +8,8 @@ import { UserProvider, UserContext, UserDispatchContext } from './contexts/UserC
 
 const App = () => {
 
+    const user = useContext(UserContext)
+
     return (
         <div className="App">
             <UserProvider>
