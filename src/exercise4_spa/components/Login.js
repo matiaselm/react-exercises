@@ -43,12 +43,12 @@ const Login = (props) => {
     }
 
     return <>
-        <p>Username</p>
-        <input type='text' name='name' placeholder='name' value={cred.name} onChange={handleChange}></input>
-        <p>Password</p>
-        <input type='password' name='passwd' placeholder='passwd' value={cred.passwd} onChange={handleChange}></input>
-        <p>Retype password</p>
-        <input type='password' name='passwdCheck' placeholder='retype passwd' value={cred.passwdCheck} onChange={handleChange}></input>
+        <label for='name'>Username:</label><br />
+        <input type='text' name='name' placeholder='name' value={cred.name} onChange={handleChange}></input><br />
+        <label for='passwd'>Password:</label><br />
+        <input type='password' name='passwd' placeholder='passwd' value={cred.passwd} onChange={handleChange}></input><br />
+        <label for='pawwdCheck'>Retype password:</label><br />
+        <input type='password' name='passwdCheck' placeholder='retype passwd' value={cred.passwdCheck} onChange={handleChange}></input><br />
         <input type='button' value='login' onClick={handleSubmit}></input>
     </>
 }
