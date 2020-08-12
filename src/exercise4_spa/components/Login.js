@@ -10,15 +10,16 @@ const Login = (props) => {
 
     const [cred, setCreds] = useState({
         name: '',
-        passwd: ''
+        passwd: '',
+        passwdCheck: ''
     })
 
     const checkLogin = () => {
-        if (cred.name === admin.name && cred.passwd === admin.passwd) {
+        if (cred.name === admin.name && cred.passwd === admin.passwd && cred.passwd === cred.passwdCheck) {
             return alert('Wow the credentials "' + cred.name + ', ' + cred.passwd + '" were correct! You can login')
         }
         else {
-            return alert('The credentials were incorrect you bastard')
+            return alert('The credentials were incorrect, you bastard')
         }
     }
 
@@ -26,7 +27,8 @@ const Login = (props) => {
         checkLogin(cred)
         setCreds({
             name: '',
-            passwd: ''
+            passwd: '',
+            passwdCheck: ''
         })
     }
 
@@ -41,10 +43,12 @@ const Login = (props) => {
     }
 
     return <>
-        <p>UserName</p>
+        <p>Username</p>
         <input type='text' name='name' placeholder='name' value={cred.name} onChange={handleChange}></input>
-        <p>PassWord</p>
-        <input type='text' name='passwd' placeholder='passwd' value={cred.passwd} onChange={handleChange}></input>
+        <p>Password</p>
+        <input type='password' name='passwd' placeholder='passwd' value={cred.passwd} onChange={handleChange}></input>
+        <p>Retype password</p>
+        <input type='password' name='passwdCheck' placeholder='retype passwd' value={cred.passwdCheck} onChange={handleChange}></input>
         <input type='button' value='login' onClick={handleSubmit}></input>
     </>
 }
