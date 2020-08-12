@@ -17,8 +17,6 @@ const BillInformation = (props) => {
         phone: ''
     });
 
-
-
     const [list, setList] = useState([])
 
     // console.log('Billinformation: ' + user.bills)
@@ -62,42 +60,31 @@ const BillInformation = (props) => {
         })
     }
 
-    if (props.user) {
-        setValue({
-            id: props.user.id,
-            name: props.user.name,
-            phone: props.user.phone
-        })
-        return fetchUsers(value)
-    }
-
     const BillTable = (props) => {
         const user = props.user
-        return <table>
+        return <div> {user.bills.length > 0 ? <table>
             <tbody>
-                {user.bills.length > 0 ? <>
-                    <tr><th>Bill Id</th><th>Sum</th><th>Date</th><th>Topic</th></tr>
-                    {user.bills.map((bill, i) => <tr key={i}>
-                        <td>{bill.id}</td>
-                        <td>{bill.sum}</td>
-                        <td>{bill.date}</td>
-                        <td>{bill.topic}</td></tr>)}
-                </> : <>No bills</>}
+                <tr><th>Bill Id</th><th>Sum</th><th>Date</th><th>Topic</th></tr>
+                {user.bills.map((bill, i) => <tr key={i}>
+                    <td>{bill.id}</td>
+                    <td>{bill.sum}</td>
+                    <td>{bill.date}</td>
+                    <td>{bill.topic}</td>
+                    <td><input type='button' value='modify'></input></td>
+                    <td><input type='button' value='remove'></input></td></tr>)}
             </tbody>
-        </table>
+        </table> : <p>No bills</p>} </div>
     }
 
     try {
         return <div>
             <SearchField type='bill' handleChange={handleChange} handleSubmit={handleSubmit} idValue={value.id}></SearchField>
-            <table>
-                <tbody>
-                    {list.map((user, i) => <>
-                        <tr>{user.name}</tr>
-                        <BillTable user={user}></BillTable>
-                    </>)}
-                </tbody>
-            </table>
+
+            {list.map((user, i) => <>
+                <h4 key={i}>{user.name} <input type='button' value='add bills'></input></h4>
+                <BillTable id='billTable' user={user}></BillTable>
+            </>)}
+
         </div>
     } catch (e) {
         return <p>Error {e} showing bills information</p>
