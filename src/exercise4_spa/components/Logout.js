@@ -1,12 +1,20 @@
 import React, { useContext } from 'react';
-import { UserContext } from '../contexts/UserContext';
+import { UserContext, UserDispatchContext } from '../contexts/UserContext';
 
 const Logout = () => {
 
     const user = useContext(UserContext);
+    const setUser = useContext(UserDispatchContext);
+
+    const logout = () => {
+        setUser({
+            username: '',
+            admin: false
+        });
+    };
 
     return (
-        <button onClick={console.log('Logout user: ' + user.username)}>Logout</button>
+        <button onClick={logout}>Logout</button>
     )
 };
 
