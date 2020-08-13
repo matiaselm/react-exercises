@@ -11,7 +11,7 @@ const Home = () => {
             <li className='info'>matias@elm.fi</li>
             <li className='info'>050313952</li>
         </ul>
-        {user.admin ? <p>you're an admin</p> : <></>}
+        {user.admin && <p>you're an admin</p>}
     </div>
 }
 

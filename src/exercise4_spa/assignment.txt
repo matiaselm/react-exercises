@@ -19,9 +19,6 @@
 
 24. Tee kirjautumisnäyttö. 
     - Testaa kovakoodattuja arvoja vasten, onko annettu käyttäjätunnus ja salasana oikeita. 
-
-    ---------------------------------^DONE^--------------------------------
-
     - Jos ne ovat oikein, niin säilytä tieto kirjautuneesta käyttäjästä ja roolista. 
     - Tunnuksen perusteella on kaksi roolia: peruskäyttäjä ja admin. 
     - Voit käyttää talletukseen kontekstia tai localstoragea.
@@ -33,3 +30,5 @@
     - Admin-käyttäjä näkee myös ko. laskutussivun ja linkkipainikkeet sinne. 
     - Ainoa asia mitä admin-käyttäjä ei näe, on kirjautumissivu. 
     - Sen sijaan admin-käyttäjä näkee Kirjaudu ulos-linkin, jolla hän voi palauttaa tilakseen kirjautumaton käyttäjä.
+
+-------------------------------------------^DONE^--------------------------------
