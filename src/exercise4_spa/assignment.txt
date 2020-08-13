@@ -1,34 +1,28 @@
-20.Tee SPA-sovellus, jonka sivuina ovat Koti, Puhelinluettelo ja Laskut.  
-    - Tee näitä vastaavat linkit, joilla ko. sivu vaihdetaan näkyville. 
-    - Näytä Kotisivulla tietoja itsestäsi: nimi, sähköposti, oppilatos, ym. mitä muuta haluat kertoa.   
-    - Puhelinluettelo-sivulle tulee edellisten tehtävien puhelinluettelon näyttötoiminnot hakuominaisuuksilla.
-        - Siellä voi myös muuttaa, poistaa tai lisätä henkilöitä. 
-    - Laskut-sivulla voi hakea laskuja antamalla henkilön id. 
-    - Siellä voi myös lisätä, poistaa tai muuttaa laskuja. 
-    - Tässä tehtävässä ei vielä tarvitse tehdä muuta kuin Koti-sivun sisältö, puhelinluettelon aiemmin tehdyn koodin porttaaminen ja sivulta toiselle vaihtaminen.
+Nippu E. (25p) Palauta tähän lopulliset backend ja  frontend-koodit (EI noden moduuleja eikä tietokantatiedostoja)!
 
-21. Toteuta loput Puhelinluettelo-sivun toiminnot: 
-    - Henkilötietojen lisäys lomakkeella olevasta painikkeesta, 
-    - Valitun henkilön päivitys ja poisto (lisää nämä painikkeet taulukkoon kunkin henkilön riville). 
-    - Lisää myös Laskut-painike, jos henkilöllä oli laskuja.
+26. Tee tunnus Atlas-palveluun MongoDB-käyttäjäksi. Seuraavat tehtävät tehdään siellä pyörivää kantaa vasten. 
+    - Asenna tarvittavat moduulit, mongoose, body-parser, nodemon ym. 
+    - Tee Node-sovellus, joka toteuttaa aiemmissa tehtävissä kuvatun clientin backendin REST-APIna. 
+    - Toteuta GET, POST, PATCH ja DELETE-metodit henkilötiedoille (puhelinluetteloa varten). 
+    - Rakenteista koodi käyttämällä erillisiä route- ja kontrollerikomponentteja.
 
-22. Toteuta Laskut sivu: hakuehtokenttinä henkilön tunniste ja hakupainike. 
-    - Kun hakupainikkeesta painaa, niin sivule renderöidään löydetyt laskut, kaikki kentät.
+27. Tee vastaavat REST-backendtoiminnot laskutiedoille. 
+    - Lisää kaikkiin tarvittaviin backendin toimintoihin toiminta asynkronisesti. 
+    - Käsittele virhetilanteet ja lähetä clientille tilanteeseen sopiva viesti. 
+    - Käytä Restin mukaisia endpointteja resurssin mukaan. 
+    - Käytä mongoosen schemamäärittelyjä, joilla määrittelet henkilöt ja laskut-resurssit ja niille kantaan collectionit.
 
-23. Lisää laskujen syöttö, muuttamis- ja poistotoiminnat samalla periaatteella kuin puhelinluettelon kanssa.
+28. Muuta tekemäsi React-sovellus käyttämään tässä luotua backendiä. Huomioi CORS.
 
-24. Tee kirjautumisnäyttö. 
-    - Testaa kovakoodattuja arvoja vasten, onko annettu käyttäjätunnus ja salasana oikeita. 
-    - Jos ne ovat oikein, niin säilytä tieto kirjautuneesta käyttäjästä ja roolista. 
-    - Tunnuksen perusteella on kaksi roolia: peruskäyttäjä ja admin. 
-    - Voit käyttää talletukseen kontekstia tai localstoragea.
+29. Toteuta käyttäjän kirjautuminen tietokantaa vasten ja luo tarvittavat tokenit. 
+    - Varmista että backendiä käyttävä frontend omaa riittävät valtuudet tokeneihin pohjautuvan varmennuksen avulla. 
+    - Vain kantaa vasten tunnistautunut käyttäjä, joka jokaisen palvelupyynnön yhteydessä 
+        palvelimen antamalla tokenilla tunnistetaan adminiksi, saa käyttää adminille tarkoitettuja palveluita.
 
-25. Toteuta seuraava logiikka: 
-    - Kirjaumaton käyttäjä näkee neljäntenä menuitemina Kirjaudu, kirjautunut käyttäjä ei näe sitä. 
-    - Peruskäyttäjä (joka ei siis ole tunnistettu adminiksi) näkee vain kotisivun ja puhelinluettelo-sivun. 
-    - Hän ei näe laskut-sivua, ei sen menuitemiä eikä lasku-linkkejä puhelinluettelon henkilöille. 
-    - Admin-käyttäjä näkee myös ko. laskutussivun ja linkkipainikkeet sinne. 
-    - Ainoa asia mitä admin-käyttäjä ei näe, on kirjautumissivu. 
-    - Sen sijaan admin-käyttäjä näkee Kirjaudu ulos-linkin, jolla hän voi palauttaa tilakseen kirjautumaton käyttäjä.
+30. Viimeistele sovelluksesi nätiksi käyttämällä tyylejä suoraan tai React bootstrapin avulla. Korjaa bugit.
 
--------------------------------------------^DONE^--------------------------------
+Bonus-tehtävä (tällä voi korvata 10 pisteen edestä puutteita kurssin muista tehtävistä): 
+    - Tee henkilöiden ja laskujen välille kannassa 1-m-suhde objectid:tä hyödyntäen (henkilöä kohti voi olla monta laskua). 
+    - Voit tallettaa kunkin henkilön yhteydessä hänen laskunsa henkilö-collectioniin ja kunkin laskun yhteyteen siihen laskuun liittyvän henkilön tiedot. 
+    - Tee REST-palvelu, jolla henkilön ja hänen laskunsa saa haettua yhdellä haulla. 
+    - Nimeä resurssi ja endpointi sopivaksi.
