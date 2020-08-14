@@ -147,7 +147,7 @@ const Login = () => {
 
                     <label htmlFor='password'>Password:</label><br />
                     <InputGroup className="mb-3">
-                        <FormControl onChange={handleChange} value={user.password} name='password'
+                        <FormControl onChange={handleChange} value={user.password} name='password' type='password'
                             placeholder="password"
                             aria-label="password"
                             aria-describedby="password"
@@ -201,7 +201,7 @@ const Login = () => {
 
                     <label htmlFor='password'>Password:</label><br />
                     <InputGroup className="mb-3">
-                        <FormControl onChange={handleChange} value={newUser.password} name='password'
+                        <FormControl onChange={handleChange} value={newUser.password} name='password' type='password'
                             placeholder="password"
                             aria-label="password"
                             aria-describedby="password"
@@ -210,10 +210,10 @@ const Login = () => {
 
                     <label htmlFor='passwordCheck'>Repeat Password:</label><br />
                     <InputGroup className="mb-3">
-                        <FormControl onChange={handleChange} value={newUser.passwordCheck} name='passwordCheck'
-                            placeholder="passwordCheck"
-                            aria-label="passwordCheck"
-                            aria-describedby="passwordCheck"
+                        <FormControl onChange={handleChange} value={newUser.passwordCheck} name='passwordCheck' type='password'
+                            placeholder="password"
+                            aria-label="password"
+                            aria-describedby="password"
                         />
                     </InputGroup>
 
