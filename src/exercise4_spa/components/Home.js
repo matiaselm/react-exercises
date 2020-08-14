@@ -1,17 +1,25 @@
 import React, { useContext } from 'react';
 import { UserProvider, UserContext, UserDispatchContext } from '../contexts/UserContext';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 const Home = () => {
     const user = useContext(UserContext)
-    return <div>
-        <h1 id='header'>Hi and welcome {user.name}!</h1>
-        <h2 id='header2'>My name is Matias Jalava</h2>
-        <ul className='infoList'>
-            <li className='info'>Second year student at Metropolia UAS</li>
-            <li className='info'>matias@elm.fi</li>
-            <li className='info'>050313952</li>
-        </ul>
-    </div>
+
+    return (
+        <Container>
+            <Row>
+                <Col>Welcome {user.name}</Col>
+                <Col> My name is Matias Jalava</Col>
+            </Row>
+            <Row>
+                <Col>Second year student at Metropolia UAS</Col>
+                <Col>matias@elm.fi</Col>
+                <Col>050313952</Col>
+            </Row>
+        </Container>
+    )
 }
 
 export default Home

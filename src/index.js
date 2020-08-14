@@ -4,6 +4,9 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 import { App } from './exercise4_spa/app'; // Change exercise-number depending on the app you want to run
 
+// Importing the Bootstrap CSS
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

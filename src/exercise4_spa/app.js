@@ -1,6 +1,7 @@
 import React from 'react';
 import RouterMenu from './components/RouterMenu';
 import { UserProvider } from './contexts/UserContext';
+import Container from 'react-bootstrap/Container';
 
 /*
     The app works as is asked in assignment, at least I think so. 
@@ -10,11 +11,11 @@ import { UserProvider } from './contexts/UserContext';
 
 const App = () => {
     return (
-        <div className="App">
+        <Container className="App">
             <UserProvider>
                 <RouterMenu></RouterMenu>
             </UserProvider>
-        </div >
+        </Container >
     );
 }
 
