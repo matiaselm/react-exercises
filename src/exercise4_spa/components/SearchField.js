@@ -35,7 +35,7 @@ const SearchField = (props) => {
                             aria-describedby="name"
                         />
                         <InputGroup.Append>
-                            <Button variant="outline-secondary" type='submit' value='Search' onClick={props.handleSubmit}>Button</Button>
+                            <Button variant="outline-secondary" type='submit' value='Search' onClick={props.handleSubmit}>Search</Button>
                         </InputGroup.Append>
                     </InputGroup>
                 </InputGroup>
@@ -43,8 +43,14 @@ const SearchField = (props) => {
         {type === 'bill' &&
             <div>
                 <InputGroup>
-                    <input type='text' name='id' placeholder='user-id' onChange={props.handleChange} value={props.idValue}></input>
-                    <input type='submit' value='Search' onClick={props.handleSubmit}></input>
+                    <FormControl onChange={props.handleChange} value={props.idValue} name='id' placeholder='user-id'
+                        placeholder="id"
+                        aria-label="id"
+                        aria-describedby="id"
+                    />
+                    <InputGroup.Append>
+                        <Button variant="outline-secondary" type='submit' value='Search' onClick={props.handleSubmit}>Search</Button>
+                    </InputGroup.Append>
                 </InputGroup>
             </div>}
     </div>

@@ -13,7 +13,7 @@ import Button from 'react-bootstrap/Button';
     - It's visibility is controlled with the billState.visibility-boolean that is controlled from here and from a callback function
 */
 
-const UserTable = (props) => {
+const UserTable = () => {
 
     const [list, setList] = useState([])
 
@@ -126,10 +126,10 @@ const UserTable = (props) => {
                                     <td>{user.city}</td>
                                     <td>{user.phonenum}</td>
                                     {user.bills &&
-                                        <td><Button value='bills' onClick={() => showBillInformation(user)}>Bills</Button></td>
+                                        <td><Button variant="outline-secondary" value='bills' onClick={() => showBillInformation(user)}>Bills</Button></td>
                                     }
-                                    <td><Button value='modify' onClick={() => modifyUser(user)}>Modify</Button></td>
-                                    <td><Button value='delete' onClick={() => deleteUser(user)}>Delete</Button></td>
+                                    <td><Button variant="outline-secondary" value='modify' onClick={() => modifyUser(user)}>Modify</Button></td>
+                                    <td><Button variant="outline-danger" value='delete' onClick={() => deleteUser(user)}>Delete</Button></td>
                                 </tr>
                             )
                         }

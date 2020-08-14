@@ -8,7 +8,6 @@ import Login from './Login';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
-import { LinkContainer } from 'react-router-bootstrap';
 
 const RouterMenu = (props) => {
 
@@ -35,7 +34,7 @@ const RouterMenu = (props) => {
                 </Nav>
                 <Navbar.Collapse className="justify-content-end">
                     <Navbar.Text style={{ color: 'lightgrey' }}>
-                        {user.isLoggedIn && <>Signed in as: {user.uid} <Button onClick={logout} variant="danger" size="sm" >Logout</Button></>}
+                        {user.isLoggedIn && <>Signed in as: {user.uid} <Button onClick={logout} variant="danger" size="sm">Logout</Button></>}
                     </Navbar.Text>
                 </Navbar.Collapse>
             </Navbar>

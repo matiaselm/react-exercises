@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import SearchField from './SearchField';
-import UserTable from './UserTable';
+import Table from 'react-bootstrap/Table';
 
 /*
     Bill Information is a component that shows selected user's bills in a table
@@ -65,7 +65,7 @@ const BillInformation = (props) => {
 
     const BillTable = (props) => {
         const user = props.user
-        return <div> {user.bills.length > 0 ? <table>
+        return <div> {user.bills.length > 0 ? <Table>
             <tbody>
                 <tr><th>Bill Id</th><th>Sum</th><th>Date</th><th>Topic</th></tr>
                 {user.bills.map((bill, i) => <tr key={i}>
@@ -76,7 +76,7 @@ const BillInformation = (props) => {
                     <td><input type='button' value='modify'></input></td>
                     <td><input type='button' value='remove'></input></td></tr>)}
             </tbody>
-        </table> : <p>No bills</p>} </div>
+        </Table> : <h3>Looks like there's no bills here at all</h3>} </div>
     }
 
     try {
