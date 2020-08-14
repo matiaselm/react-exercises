@@ -15,7 +15,7 @@ const RouterMenu = (props) => {
 
     return <Router>
         <main>
-            <Navbar bg="dark" expand="lg" variant="dark">
+            <Navbar bg="dark" expand="lg" variant="dark" style={{ marginBottom: '2ch' }}>
                 <Nav>
                     <Nav.Link><Link to='/'>Home</Link></Nav.Link>
                     <Nav.Link><Link to='/usertable'>Users</Link></Nav.Link>

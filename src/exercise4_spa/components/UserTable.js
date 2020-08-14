@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import BillInformation from './BillInformation';
 import SearchField from './SearchField';
 import axios from 'axios';
+import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button';
 
 /*
 - list is given from props. It holds the global variable userList that is supposed to update whenever there are new users added or asked to be shown
@@ -111,7 +113,7 @@ const UserTable = (props) => {
         return (
             <>
                 <SearchField type='user' handleChange={handleChange} handleSubmit={handleSubmit} idValue={value.id} phoneValue={value.phone} nameValue={value.name}></SearchField>
-                <table>
+                <Table>
                     <tbody >
                         <tr><th>Name</th><th>Uid</th><th>Address</th><th>Zip code</th><th>City</th><th>Phone</th></tr>
                         {
@@ -124,15 +126,15 @@ const UserTable = (props) => {
                                     <td>{user.city}</td>
                                     <td>{user.phonenum}</td>
                                     {user.bills &&
-                                        <td><button value='bills' onClick={() => showBillInformation(user)}>Bills</button></td>
+                                        <td><Button value='bills' onClick={() => showBillInformation(user)}>Bills</Button></td>
                                     }
-                                    <td><button value='modify' onClick={() => modifyUser(user)}>Modify</button></td>
-                                    <td><button value='delete' onClick={() => deleteUser(user)}>Delete</button></td>
+                                    <td><Button value='modify' onClick={() => modifyUser(user)}>Modify</Button></td>
+                                    <td><Button value='delete' onClick={() => deleteUser(user)}>Delete</Button></td>
                                 </tr>
                             )
                         }
                     </tbody>
-                </table>
+                </Table>
                 {billState.visibility ? <BillInformation setVisible={setVisible} user={billState.user}></BillInformation> : <></>}
             </>
         )

@@ -1,4 +1,7 @@
 import React from 'react';
+import InputGroup from 'react-bootstrap/InputGroup';
+import FormControl from 'react-bootstrap/FormControl';
+import Button from 'react-bootstrap/Button';
 
 /*
 Searchfield's events are handled on parent level with callback functions. 
@@ -14,15 +17,35 @@ const SearchField = (props) => {
     return (<div>
         {type === 'user' &&
             < div >
-                <input type='text' name='id' placeholder='id' onChange={props.handleChange} value={props.idValue}></input>
-                <input type='text' name='phone' placeholder='phonenumber' onChange={props.handleChange} value={props.phoneValue}></input>
-                <input type='text' name='name' placeholder='name' onChange={props.handleChange} value={props.nameValue}></input>
-                <input type='submit' value='Search' onClick={props.handleSubmit}></input>
+                <InputGroup>
+                    <InputGroup className="mb-3">
+                        <FormControl onChange={props.handleChange} value={props.idValue} name='id'
+                            placeholder="id"
+                            aria-label="id"
+                            aria-describedby="id"
+                        />
+                        <FormControl onChange={props.handleChange} value={props.phoneValue} name='phone'
+                            placeholder="phonenumber"
+                            aria-label="phonenumber"
+                            aria-describedby="phonenumber"
+                        />
+                        <FormControl onChange={props.handleChange} value={props.nameValue} name='name'
+                            placeholder="name"
+                            aria-label="name"
+                            aria-describedby="name"
+                        />
+                        <InputGroup.Append>
+                            <Button variant="outline-secondary" type='submit' value='Search' onClick={props.handleSubmit}>Button</Button>
+                        </InputGroup.Append>
+                    </InputGroup>
+                </InputGroup>
             </div>}
         {type === 'bill' &&
             <div>
-                <input type='text' name='id' placeholder='user-id' onChange={props.handleChange} value={props.idValue}></input>
-                <input type='submit' value='Search' onClick={props.handleSubmit}></input>
+                <InputGroup>
+                    <input type='text' name='id' placeholder='user-id' onChange={props.handleChange} value={props.idValue}></input>
+                    <input type='submit' value='Search' onClick={props.handleSubmit}></input>
+                </InputGroup>
             </div>}
     </div>
     )
