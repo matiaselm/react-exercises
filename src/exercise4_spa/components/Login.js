@@ -1,66 +1,72 @@
 import React, { useState, useContext } from 'react';
-import { UserProvider, UserContext, UserDispatchContext } from '../contexts/UserContext';
+import { UserContext, UserDispatchContext } from '../contexts/UserContext';
+import axios from 'axios';
 
 const Login = () => {
-    const admin = {
-        name: 'MJ',
-        passwd: '1234'
-    }
-
     const userDetails = useContext(UserContext);
     const setUserDetails = useContext(UserDispatchContext);
 
+    let url = 'http://localhost:5000/api/'
+
     // Local hook, don't want to change the context before authentication/login
-    const [userCred, setUserCred] = useState({
-        name: '',
-        passwd: '',
-        passwdCheck: ''
+    const [user, setUser] = useState({
+        uid: '',
+        password: ''
     })
 
-    const checkLogin = () => {
-        if (userCred.name === admin.name && userCred.passwd === admin.passwd && userCred.passwd === userCred.passwdCheck) {
-            // alert('Wow the credentials "' + userCred.name + ', ' + userCred.passwd + '" were correct! You can login')
-            return true
-        }
-        else {
-            alert('The credentials were incorrect, you bastard')
-            return false
-        }
-    }
+    const [currentUser, setCurrentUser] = useState({});
 
-    const handleSubmit = () => {
-        if (checkLogin()) {
-            console.log('UserCreds: ' + userCred.name)
+    const handleSubmit = (e) => {
+        console.log('Submitting login to db: ' + user.uid + ' , ' + user.password)
+
+        // Send a POST request
+
+        axios({
+            method: 'post',
+            url: url + 'users/login',
+            data: {
+                uid: user.uid,
+                password: user.password
+            }
+        }).then((response) => {
+            setCurrentUser(response.data)
+            console.log('Logged in, token: ' + response.data.token)
             setUserDetails({
-                username: userCred.name,
-                admin: true
+                uid: response.data.uid,
+                name: response.data.name,
+                token: response.data.token,
+                isLoggedIn: true
             })
-            console.log('UserContext: ' + userDetails.username)
-            setUserCred({ name: '', passwd: '', passwdCheck: '' })
-            return
-        } else {
-            setUserCred({ name: '', passwd: '', passwdCheck: '' })
-            return
-        }
+            setUser({
+                uid: '',
+                password: ''
+            })
+        }).catch(error => {
+            console.log(error.response);
+            setUser({
+                uid: '',
+                password: ''
+            })
+            return alert('Please input asked credentials, uid and password')
+        });
+
     }
 
     const handleChange = (event) => {
         const val = event.target.value
         // console.log('handlechange val: ' + val)
         // console.log('target name: ' + event.target.name)
-        setUserCred({
-            ...userCred,
+        setUser({
+            ...user,
             [event.target.name]: val
         })
     }
 
     return <>
         <label htmlFor='name'>Username:</label><br />
-        <input type='text' name='name' placeholder='name' value={userCred.name} onChange={handleChange}></input><br />
-        <label htmlFor='passwd'>Password:</label><br />
-        <input type='password' name='passwd' placeholder='passwd' value={userCred.passwd} onChange={handleChange}></input><br />
-        <label htmlFor='pawwdCheck'>Retype password:</label><br />
-        <input type='password' name='passwdCheck' placeholder='retype passwd' value={userCred.passwdCheck} onChange={handleChange}></input><br />
+        <input type='text' name='uid' placeholder='uid' value={user.uid} onChange={handleChange}></input><br />
+        <label htmlFor='password'>Password:</label><br />
+        <input type='password' name='password' placeholder='password' value={user.password} onChange={handleChange}></input><br />
         <input type='button' value='login' onClick={handleSubmit}></input>
     </>
 }

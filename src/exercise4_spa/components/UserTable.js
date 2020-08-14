@@ -45,7 +45,8 @@ const UserTable = (props) => {
 
     const fetchUsers = (input) => {
 
-        let searchTerm = 'http://localhost:3003/people?'
+        // let searchTerm = 'http://localhost:3003/people?'
+        let searchTerm = 'http://localhost:5000/api/users?'
 
         if (input.id !== '') {
             searchTerm += '&id=' + input.id
@@ -109,17 +110,18 @@ const UserTable = (props) => {
                 <SearchField type='user' handleChange={handleChange} handleSubmit={handleSubmit} idValue={value.id} phoneValue={value.phone} nameValue={value.name}></SearchField>
                 <table>
                     <tbody >
-                        <tr><th>Name</th><th>Address</th><th>Zip code</th><th>City</th><th>Phone</th></tr>
+                        <tr><th>Id</th><th>Name</th><th>Address</th><th>Zip code</th><th>City</th><th>Phone</th></tr>
                         {
                             list.map((user, i) =>
                                 <tr key={i}>
+                                    <td>{user._id}</td>
                                     <td>{user.name}</td>
                                     <td>{user.address}</td>
                                     <td>{user.postalnum}</td>
                                     <td>{user.city}</td>
                                     <td>{user.phonenum}</td>
-                                    {user.bills.length > 0 ?
-                                        <td><button value='bills' onClick={() => showBillInformation(user)}>Bills</button></td> : <td></td>
+                                    {user.bills &&
+                                        <td><button value='bills' onClick={() => showBillInformation(user)}>Bills</button></td>
                                     }
                                     <td><button value='modify' onClick={() => modifyUser(user)}>Modify</button></td>
                                     <td><button value='delete' onClick={() => deleteUser(user)}>Delete</button></td>
