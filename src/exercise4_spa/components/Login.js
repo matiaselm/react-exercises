@@ -2,6 +2,10 @@ import React, { useState, useContext } from 'react';
 import { UserContext, UserDispatchContext } from '../contexts/UserContext';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
+import InputGroup from 'react-bootstrap/InputGroup';
+import FormControl from 'react-bootstrap/FormControl';
+import Card from 'react-bootstrap/Card';
+import Nav from 'react-bootstrap/Nav';
 
 const Login = () => {
     const userDetails = useContext(UserContext);
@@ -118,27 +122,106 @@ const Login = () => {
     }
 
     return <>
-        {view ? <div>
-            <label htmlFor='name'>Username:</label><br />
-            <input type='text' name='uid' placeholder='uid' value={user.uid} onChange={handleChange}></input><br />
-            <label htmlFor='password'>Password:</label><br />
-            <input type='password' name='password' placeholder='password' value={user.password} onChange={handleChange}></input><br />
-            <input type='button' value='login' onClick={handleSubmit}></input>
-            <input type='button' value='register' onClick={() => setView(!view)}></input>
-        </div> : <div>
-                <label htmlFor='name'>Username:</label><br />
-                <input type='text' name='uid' placeholder='uid' value={newUser.uid} onChange={handleChange}></input><br />
-                <label htmlFor='name'>Email:</label><br />
-                <input type='text' name='email' placeholder='email' value={newUser.email} onChange={handleChange}></input><br />
-                <label htmlFor='name'>Full name:</label><br />
-                <input type='text' name='name' placeholder='name' value={newUser.name} onChange={handleChange}></input><br />
-                <label htmlFor='password'>Password:</label><br />
-                <input type='password' name='password' placeholder='password' value={newUser.password} onChange={handleChange}></input><br />
-                <label htmlFor='password'>Repeat Password:</label><br />
-                <input type='password' name='passwordCheck' placeholder='passwordCheck' value={newUser.passwordCheck} onChange={handleChange}></input><br />
-                <input type='button' value='submit' onClick={handleRegisterSubmit}></input>
-                <input type='button' value='register' onClick={() => setView(!view)}></input>
-            </div>}
+        {view ? <Card style={{ width: '35ch' }}>
+            <Card.Header>
+                <Nav variant="tabs" defaultActiveKey="#first">
+                    <Nav.Item>
+                        <Nav.Link href="#first" onClick={() => setView(true)}>Login</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link href="#second" onClick={() => setView(false)}>Register</Nav.Link>
+                    </Nav.Item>
+                </Nav>
+            </Card.Header>
+            <Card.Body>
+                <InputGroup>
+
+                    <label htmlFor='name'>Username:</label><br />
+                    <InputGroup className="mb-3">
+                        <FormControl onChange={handleChange} value={user.uid} name='uid'
+                            placeholder="uid"
+                            aria-label="uid"
+                            aria-describedby="uid"
+                        />
+                    </InputGroup>
+
+                    <label htmlFor='password'>Password:</label><br />
+                    <InputGroup className="mb-3">
+                        <FormControl onChange={handleChange} value={user.password} name='password'
+                            placeholder="password"
+                            aria-label="password"
+                            aria-describedby="password"
+                        />
+                    </InputGroup>
+
+                    <InputGroup className="mb-3">
+                        <Button variant="outline-secondary" value='login' onClick={handleSubmit}>Login</Button>
+                    </InputGroup>
+
+                </InputGroup>
+            </Card.Body>
+        </Card> : <Card style={{ width: '35ch' }}>
+                <Card.Header>
+                    <Nav variant="tabs">
+                        <Nav.Item>
+                            <Nav.Link href="#first" onClick={() => setView(true)}>Login</Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Nav.Link href="#second" onClick={() => setView(false)}>Register</Nav.Link>
+                        </Nav.Item>
+                    </Nav>
+                </Card.Header>
+                <Card.Body>
+                    <label htmlFor='uid'>Username:</label><br />
+                    <InputGroup className="mb-3">
+                        <FormControl onChange={handleChange} value={newUser.uid} name='uid'
+                            placeholder="uid"
+                            aria-label="uid"
+                            aria-describedby="uid"
+                        />
+                    </InputGroup>
+
+                    <label htmlFor='email'>Email:</label><br />
+                    <InputGroup className="mb-3">
+                        <FormControl onChange={handleChange} value={newUser.email} name='email'
+                            placeholder="email"
+                            aria-label="email"
+                            aria-describedby="email"
+                        />
+                    </InputGroup>
+
+                    <label htmlFor='name'>Full name:</label><br />
+                    <InputGroup className="mb-3">
+                        <FormControl onChange={handleChange} value={newUser.name} name='name'
+                            placeholder="name"
+                            aria-label="name"
+                            aria-describedby="name"
+                        />
+                    </InputGroup>
+
+                    <label htmlFor='password'>Password:</label><br />
+                    <InputGroup className="mb-3">
+                        <FormControl onChange={handleChange} value={newUser.password} name='password'
+                            placeholder="password"
+                            aria-label="password"
+                            aria-describedby="password"
+                        />
+                    </InputGroup>
+
+                    <label htmlFor='passwordCheck'>Repeat Password:</label><br />
+                    <InputGroup className="mb-3">
+                        <FormControl onChange={handleChange} value={newUser.passwordCheck} name='passwordCheck'
+                            placeholder="passwordCheck"
+                            aria-label="passwordCheck"
+                            aria-describedby="passwordCheck"
+                        />
+                    </InputGroup>
+
+                    <InputGroup className="mb-3">
+                        <Button variant="outline-secondary" value='login' onClick={handleRegisterSubmit}>Register</Button>
+                    </InputGroup>
+                </Card.Body>
+            </Card>}
     </>
 }
 export default Login
