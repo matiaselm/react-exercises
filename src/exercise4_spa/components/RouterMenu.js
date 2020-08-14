@@ -8,6 +8,7 @@ import Login from './Login';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
+import { LinkContainer } from 'react-router-bootstrap';
 
 const RouterMenu = (props) => {
 
@@ -26,15 +27,15 @@ const RouterMenu = (props) => {
     return <Router>
         <main>
             <Navbar bg="dark" expand="lg" variant="dark" style={{ marginBottom: '2ch' }}>
-                <Nav>
-                    <Nav.Link><Link to='/'>Home</Link></Nav.Link>
-                    <Nav.Link><Link to='/usertable'>Users</Link></Nav.Link>
-                    {!user.name && <Nav.Link><Link to='/login'>Login</Link></Nav.Link>}
-                    {user.isLoggedIn && <Nav.Link><Link to='/billinformation'>Bills</Link></Nav.Link>}
+                <Nav bg="dark">
+                    <Nav.Link><Link style={{ color: 'lightgrey' }} to='/'>Home</Link></Nav.Link>
+                    <Nav.Link><Link style={{ color: 'lightgrey' }} to='/usertable'>Users</Link></Nav.Link>
+                    {!user.name && <Nav.Link><Link style={{ color: 'lightgrey' }} to='/login'>Login</Link></Nav.Link>}
+                    {user.isLoggedIn && <Nav.Link><Link style={{ color: 'lightgrey' }} to='/billinformation'>Bills</Link></Nav.Link>}
                 </Nav>
                 <Navbar.Collapse className="justify-content-end">
-                    <Navbar.Text>
-                        {user.isLoggedIn && <>Signed in as: {user.uid} <Button onClick={logout}>Logout</Button></>}
+                    <Navbar.Text style={{ color: 'lightgrey' }}>
+                        {user.isLoggedIn && <>Signed in as: {user.uid} <Button onClick={logout} variant="danger" size="sm" >Logout</Button></>}
                     </Navbar.Text>
                 </Navbar.Collapse>
             </Navbar>

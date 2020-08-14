@@ -11,7 +11,7 @@ import Container from 'react-bootstrap/Container';
 
 const App = () => {
     return (
-        <Container className="App">
+        <Container className="App" >
             <UserProvider>
                 <RouterMenu></RouterMenu>
             </UserProvider>
