@@ -8,8 +8,10 @@ const Logout = () => {
 
     const logout = () => {
         setUser({
-            username: '',
-            admin: false
+            uid: '',
+            name: '',
+            token: '',
+            isLoggedIn: false
         });
     };
 

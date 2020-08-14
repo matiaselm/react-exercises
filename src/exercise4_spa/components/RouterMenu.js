@@ -17,8 +17,8 @@ const RouterMenu = (props) => {
                 <ul>
                     <li><Link to='/'>Home</Link></li>
                     <li><Link to='/usertable'>Users</Link></li>
-                    {!user.username ? <li><Link to='/login'>Login</Link></li> : <li><Link to='/logout'>Logout</Link></li>}
-                    {user.admin && <li><Link to='/billinformation'>Bills</Link></li>}
+                    {!user.name ? <li><Link to='/login'>Login</Link></li> : <li><Link to='/logout'>Logout</Link></li>}
+                    {user.isLoggedIn && <li><Link to='/billinformation'>Bills</Link></li>}
                 </ul>
             </nav>
             <Route exact path='/' component={Home} />

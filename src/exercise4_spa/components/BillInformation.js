@@ -7,13 +7,13 @@ import UserTable from './UserTable';
     Bill Information is a component that shows selected user's bills in a table
 
     TODO: BillInformation to fetch all bills in the db on it's own without props
-    */
+*/
 
 const BillInformation = (props) => {
 
     const [value, setValue] = useState({
         id: '',
-        name: '',
+        uid: '',
         phone: ''
     });
 
@@ -33,6 +33,9 @@ const BillInformation = (props) => {
         axios.get(searchTerm)
             .then((response) => {
                 setList(response.data)
+            })
+            .catch((error) => {
+                console.log('Something went wrong getting users. ' + error);
             });
     }
 
@@ -45,7 +48,7 @@ const BillInformation = (props) => {
         fetchUsers(value)
         setValue({
             id: '',
-            name: '',
+            uid: '',
             phone: ''
         })
     }

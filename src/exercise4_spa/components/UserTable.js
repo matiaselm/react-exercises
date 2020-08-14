@@ -17,7 +17,7 @@ const UserTable = (props) => {
 
     const [value, setValue] = useState({
         id: '',
-        name: '',
+        uid: '',
         phone: ''
     });
 
@@ -28,7 +28,7 @@ const UserTable = (props) => {
         fetchUsers(value)
         setValue({
             id: '',
-            name: '',
+            uid: '',
             phone: ''
         })
     }
@@ -67,6 +67,9 @@ const UserTable = (props) => {
             .then((response) => {
                 setList(response.data)
             })
+            .catch((error) => {
+                console.log('Something went wrong fetching users ' + error);
+            });
     }
 
     useEffect(() => fetchUsers(value), [])
@@ -110,12 +113,12 @@ const UserTable = (props) => {
                 <SearchField type='user' handleChange={handleChange} handleSubmit={handleSubmit} idValue={value.id} phoneValue={value.phone} nameValue={value.name}></SearchField>
                 <table>
                     <tbody >
-                        <tr><th>Id</th><th>Name</th><th>Address</th><th>Zip code</th><th>City</th><th>Phone</th></tr>
+                        <tr><th>Name</th><th>Uid</th><th>Address</th><th>Zip code</th><th>City</th><th>Phone</th></tr>
                         {
                             list.map((user, i) =>
                                 <tr key={i}>
-                                    <td>{user._id}</td>
                                     <td>{user.name}</td>
+                                    <td>{user.uid}</td>
                                     <td>{user.address}</td>
                                     <td>{user.postalnum}</td>
                                     <td>{user.city}</td>
