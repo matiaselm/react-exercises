@@ -111,6 +111,8 @@ const UserTable = () => {
         setList([list])
     }
 
+    // currentUser.admin &&
+
     try {
         return (
             <>
@@ -133,7 +135,7 @@ const UserTable = () => {
                                         {user.bills &&
                                             <td><Button variant="outline-secondary" value='bills' onClick={() => console.log('Clicked on bill-button')}>Bills</Button></td>
                                         }
-                                        {currentUser.admin && <>
+                                        {true && <>
                                             <td><Button variant="outline-secondary" value='modify' onClick={() => modifyUser(user)}>Modify</Button></td>
                                             <td><Button variant="outline-danger" value='delete' onClick={() => deleteUser(user)}>Delete</Button></td>
                                         </>}

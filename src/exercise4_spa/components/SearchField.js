@@ -39,7 +39,7 @@ const SearchField = (props) => {
 
                 <InputGroup className="mb-3">
                     <InputGroup.Append>
-                        <Button variant="secondary" onClick={changeSearch}>Toggle search</Button>
+                        <Button variant="secondary" onClick={changeSearch}>Change search</Button>
                     </InputGroup.Append>
 
                     {search === 'uid' && <FormControl onChange={props.handleChange} value={props.uidValue} name='uid'
