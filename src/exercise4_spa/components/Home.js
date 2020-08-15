@@ -9,19 +9,23 @@ const Home = () => {
     const user = useContext(UserContext)
 
     return (
-        <Container>
-            <Card style={{ width: '40ch' }} >
-                <Card.Header>About</Card.Header>
-                <Card.Body>
-                    <Card.Img variant="top" src="https://i.imgur.com/60z35CR.png" />
-                    <Card.Title >Matias Jalava</Card.Title>
-                    <Card.Text>
-                        Second year student at Metropolia UAS.
-                        Big time fisher and a gamer.
-                </Card.Text>
-                    <Card.Link href="https://github.com/matiaselm">Github</Card.Link>
-                </Card.Body>
-            </Card>
+        <Container fluid>
+            <Row>
+                <Col>
+                    <Card style={{ width: '40ch' }} >
+                        <Card.Img variant="top" src="https://i.imgur.com/60z35CR.png" />
+
+                        <Card.Body>
+                            <Card.Title >Matias Jalava</Card.Title>
+                            <Card.Text>
+                                Second year student at Metropolia UAS.
+                                Big time fisher and a gamer.
+                        </Card.Text>
+                            <Card.Link href="https://github.com/matiaselm">Github</Card.Link>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            </Row>
         </Container>
     )
 }

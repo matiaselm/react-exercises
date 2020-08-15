@@ -19,6 +19,7 @@ const Login = () => {
         password: ''
     })
 
+    // newUser state hook manages the inputs of register-screen
     const [newUser, setNewUser] = useState({
         uid: '',
         name: '',
@@ -27,10 +28,11 @@ const Login = () => {
         passwordCheck: ''
     })
 
+    // clears both user-hooks
     const clearInputs = () => {
         setUser({
             uid: '',
-            password: ''
+            password: '',
         });
         setNewUser({
             uid: '',
@@ -41,14 +43,12 @@ const Login = () => {
         });
     }
 
-    const [currentUser, setCurrentUser] = useState({});
     const [view, setView] = useState(true); //This boolean manages if register window is visible
 
     const handleSubmit = (e) => {
         console.log('Submitting login to db: ' + user.uid + ' , ' + user.password)
 
         // Send a POST request
-
         axios({
             method: 'post',
             url: url + 'users/login',
@@ -57,11 +57,12 @@ const Login = () => {
                 password: user.password
             }
         }).then((response) => {
-            setCurrentUser(response.data)
             console.log('Logged in, token: ' + response.data.token)
+            console.log('Response data admin check: ' + response.data.admin)
             setUserDetails({
                 uid: response.data.uid,
                 name: response.data.name,
+                admin: response.data.admin,
                 token: response.data.token,
                 isLoggedIn: true
             })
@@ -74,7 +75,6 @@ const Login = () => {
     }
 
     const handleRegisterSubmit = (e) => {
-
         if (newUser.password === newUser.passwordCheck)
             axios({
                 method: 'post',
@@ -86,7 +86,6 @@ const Login = () => {
                     password: newUser.password,
                 }
             }).then((response) => {
-                setCurrentUser(response.data)
                 console.log('Logged in, token: ' + response.data.token)
                 setUserDetails({
                     uid: response.data.uid,
