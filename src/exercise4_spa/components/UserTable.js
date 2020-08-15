@@ -21,11 +21,9 @@ const UserTable = () => {
 
     const currentUser = useContext(UserContext);
     const [list, setList] = useState([])
-
-
-
     const [user, setUser] = useState({})
     const [modifyMenu, setModifyMenu] = useState(false)
+    const [userToModify, setUserToModify] = useState({})
 
     const [value, setValue] = useState({
         uid: '',
@@ -47,7 +45,6 @@ const UserTable = () => {
         // console.log('Handlesubmit: ' + value.id, value.name, value.phone)
         fetchUsers()
         clearValue()
-
     }
 
     const handleChange = (event) => {
@@ -58,6 +55,24 @@ const UserTable = () => {
             ...value,
             [event.target.name]: val
         })
+    }
+
+    const fetchUserById = (user) => {
+        console.log('Fetching user ' + user.name + ' with id: ' + user._id)
+        const searchTerm = 'http://localhost:5000/api/users/' + user._id
+
+        axios.get(searchTerm)
+            .then((response) => {
+                setUserToModify(response.data.user)
+                setModifyMenu(true)
+            })
+            .catch((e) => {
+                console.log('could not find user');
+            })
+    }
+
+    const hideModifyMenu = () => {
+        setModifyMenu(false)
     }
 
     const fetchUsers = () => {
@@ -86,7 +101,6 @@ const UserTable = () => {
         axios.get(searchTerm)
             .then((response) => {
                 setList(response.data)
-
             })
             .catch((error) => {
                 console.log('Something went wrong fetching users ' + error);
@@ -94,12 +108,6 @@ const UserTable = () => {
     }
 
     useEffect(() => fetchUsers(value), [])
-
-    const modifyUser = (user) => {
-        setUser(user)
-        setModifyMenu(!modifyMenu)
-        console.log('Modifying user: ' + user.name);
-    }
 
     const deleteUser = (user) => {
         alert('Are you sure you want to delete user ' + user.name + '?');
@@ -118,7 +126,6 @@ const UserTable = () => {
             <>
                 <SearchField type='user' clearValue={clearValue} handleChange={handleChange} handleSubmit={handleSubmit} uidValue={value.uid} phoneValue={value.phone} nameValue={value.name}></SearchField>
                 <Container>
-
                     <Col>
                         <Table>
                             <tbody >
@@ -136,7 +143,7 @@ const UserTable = () => {
                                             <td><Button variant="outline-secondary" value='bills' onClick={() => console.log('Clicked on bill-button')}>Bills</Button></td>
                                         }
                                         {true && <>
-                                            <td><Button variant="outline-secondary" value='modify' onClick={() => modifyUser(user)}>Modify</Button></td>
+                                            <td><Button variant="outline-secondary" value='modify' onClick={() => fetchUserById(user)}>Modify</Button></td>
                                             <td><Button variant="outline-danger" value='delete' onClick={() => deleteUser(user)}>Delete</Button></td>
                                         </>}
                                     </tr>
@@ -146,7 +153,7 @@ const UserTable = () => {
                         </Table>
                     </Col>
                     <Col>
-                        {modifyMenu && <ModifyForm user={user}></ModifyForm>}
+                        {modifyMenu && <ModifyForm hide={() => setModifyMenu(false)} user={userToModify}></ModifyForm>}
                     </Col>
 
                 </Container>

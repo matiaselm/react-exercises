@@ -1,26 +1,30 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
 
 const ModifyForm = (props) => {
-    const _id = props._id
     const user = props.user
+
     console.log('User to modify: ' + user.name + ' , ' + user._id)
 
+    const [bill, setBill] = useState(false)
+    const [admin, setAdmin] = useState(false)
+
     const [value, setValue] = useState({
-        uid: '',
-        name: '',
-        email: '',
-        password: '',
-        address: '',
-        address: '',
-        postalnum: '',
-        city: '',
-        phonenum: '',
-        bills: '',
-        admin: ''
+        uid: user.uid,
+        name: user.name,
+        email: user.email,
+        password: user.password,
+        address: user.address,
+        postalnum: user.postalnum,
+        city: user.city,
+        phonenum: user.phonenum,
+        bills: bill,
+        admin: admin
     })
 
     const handleSubmit = () => {
@@ -29,19 +33,32 @@ const ModifyForm = (props) => {
 
         // FUNCTION TO PATCH ASKED USER HERE
 
-        setValue({
-            uid: '',
-            name: '',
-            email: '',
-            password: '',
-            address: '',
-            address: '',
-            postalnum: '',
-            city: '',
-            phonenum: '',
-            bills: '',
-            admin: ''
-        })
+        const url = 'http://localhost:5000/api/users/'
+
+        const userToSend = {
+            'uid': value.uid,
+            'name': value.name,
+            'email': value.email,
+            'password': value.password,
+            'address': value.address,
+            'postalnum': value.postalnum,
+            'city': value.city,
+            'phonenum': value.phonenum,
+            'bills': false,
+            'admin': false
+        }
+
+        axios({
+            method: 'patch',
+            url: url + user._id,
+            data: userToSend
+        }).then((response) => {
+            console.log('Modified user: ' + user.uid + ', with response: ' + response.data)
+            props.hide()
+        }).catch(error => {
+            return console.log(error.response);
+        });
+        return console.log('Registered');
     }
 
     const handleChange = (event) => {
@@ -59,93 +76,94 @@ const ModifyForm = (props) => {
             <InputGroup>
                 <InputGroup className="mb-3">
 
-                    <label htmlFor='name'>Username:</label><br />
-                    <InputGroup className="mb-3">
-                        <FormControl onChange={handleChange} value={value.uid} name='uid'
-                            placeholder="uid"
-                            aria-label="uid"
-                            aria-describedby="uid"
-                        />
-                    </InputGroup>
+                    <Col>
+                        <label htmlFor="uid">Uid: </label>
+                        <InputGroup className="mb-3">
+                            <FormControl onChange={handleChange} value={value.uid} name='uid'
+                                placeholder="uid"
+                                aria-label="uid"
+                                aria-describedby="uid"
+                            />
+                        </InputGroup>
 
-                    <InputGroup className="mb-3">
-                        <FormControl onChange={handleChange} value={value.name} name='name'
-                            placeholder="name"
-                            aria-label="name"
-                            aria-describedby="name"
-                        />
-                    </InputGroup>
+                        <label htmlFor="uid">Name: </label>
+                        <InputGroup className="mb-3">
+                            <FormControl onChange={handleChange} value={value.name} name='name'
+                                placeholder="name"
+                                aria-label="name"
+                                aria-describedby="name"
+                            />
+                        </InputGroup>
 
-                    <InputGroup className="mb-3">
-                        <FormControl onChange={handleChange} value={value.email} name='email'
-                            placeholder="email"
-                            aria-label="email"
-                            aria-describedby="email"
-                        />
-                    </InputGroup>
+                        <label htmlFor="uid">Email: </label>
+                        <InputGroup className="mb-3">
+                            <FormControl onChange={handleChange} value={value.email} name='email'
+                                placeholder="email"
+                                aria-label="email"
+                                aria-describedby="email"
+                            />
+                        </InputGroup>
+                    </Col>
 
-                    <InputGroup className="mb-3">
-                        <FormControl onChange={handleChange} value={value.password} name='password' type='password'
-                            placeholder="password"
-                            aria-label="password"
-                            aria-describedby="password"
-                        />
-                    </InputGroup>
+                    <Col>
+                        <label htmlFor="uid">Password: </label>
+                        <InputGroup className="mb-3">
+                            <FormControl onChange={handleChange} value={value.password} name='password' type='password'
+                                placeholder="password"
+                                aria-label="password"
+                                aria-describedby="password"
+                            />
+                        </InputGroup>
 
-                    <InputGroup className="mb-3">
-                        <FormControl onChange={handleChange} value={value.address} name='address'
-                            placeholder="address"
-                            aria-label="address"
-                            aria-describedby="address"
-                        />
-                    </InputGroup>
+                        <label htmlFor="uid">Street address: </label>
+                        <InputGroup className="mb-3">
+                            <FormControl onChange={handleChange} value={value.address} name='address'
+                                placeholder="address"
+                                aria-label="address"
+                                aria-describedby="address"
+                            />
+                        </InputGroup>
 
-                    <InputGroup className="mb-3">
-                        <FormControl onChange={handleChange} value={value.postalnum} name='postalnum'
-                            placeholder="postalnum"
-                            aria-label="postalnum"
-                            aria-describedby="postalnum"
-                        />
-                    </InputGroup>
+                        <label htmlFor="uid">ZIP-number: </label>
+                        <InputGroup className="mb-3">
+                            <FormControl onChange={handleChange} value={value.postalnum} name='postalnum'
+                                placeholder="postalnum"
+                                aria-label="postalnum"
+                                aria-describedby="postalnum"
+                            />
+                        </InputGroup>
+                    </Col>
 
-                    <InputGroup className="mb-3">
-                        <FormControl onChange={handleChange} value={value.city} name='city'
-                            placeholder="city"
-                            aria-label="city"
-                            aria-describedby="city"
-                        />
-                    </InputGroup>
+                    <Col>
+                        <label htmlFor="uid">City: </label>
+                        <InputGroup className="mb-3">
+                            <FormControl onChange={handleChange} value={value.city} name='city'
+                                placeholder="city"
+                                aria-label="city"
+                                aria-describedby="city"
+                            />
+                        </InputGroup>
 
-                    <InputGroup className="mb-3">
-                        <FormControl onChange={handleChange} value={value.phonenum} name='phonenum'
-                            placeholder="phonenum"
-                            aria-label="phonenum"
-                            aria-describedby="phonenum"
-                        />
-                    </InputGroup>
+                        <label htmlFor="uid">Phone number: </label>
+                        <InputGroup className="mb-3">
+                            <FormControl onChange={handleChange} value={value.phonenum} name='phonenum'
+                                placeholder="phonenum"
+                                aria-label="phonenum"
+                                aria-describedby="phonenum"
+                            />
+                        </InputGroup>
 
-                    <InputGroup className="mb-3">
-                        <FormControl onChange={handleChange} value={value.bills} name='bills'
-                            placeholder="bills"
-                            aria-label="bills"
-                            aria-describedby="bills"
-                        />
-                    </InputGroup>
 
-                    <InputGroup className="mb-3">
-                        <FormControl onChange={handleChange} value={value.admin} name='admin'
-                            placeholder="admin"
-                            aria-label="admin"
-                            aria-describedby="admin"
-                        />
-                    </InputGroup>
+                        <Form.Check onChange={() => setBill(!bill)} label='bills'></Form.Check>
+                        <Form.Check onChange={() => setAdmin(!admin)} label='admin'></Form.Check>
 
-                    <InputGroup.Append>
-                        <Button variant="outline-secondary" type='submit' value='submit' onClick={handleSubmit}>Submit</Button>
-                    </InputGroup.Append>
+                    </Col>
+
+
+                    <Button style={{ height: '5ch' }} variant="primary" type='submit' value='submit' onClick={handleSubmit}>Submit</Button>
+
                 </InputGroup>
             </InputGroup>
-
         </div>
     </>
 }
