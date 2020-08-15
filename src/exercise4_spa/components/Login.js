@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { UserContext, UserDispatchContext } from '../contexts/UserContext';
+import { UserDispatchContext } from '../contexts/UserContext';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';

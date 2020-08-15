@@ -36,12 +36,9 @@ const SearchField = (props) => {
     return (<div>
         {type === 'user' &&
             < div >
-
                 <InputGroup className="mb-3">
 
-
                     <Button style={{ marginRight: '1ch' }} variant="secondary" onClick={changeSearch}>Change search</Button>
-
 
                     {search === 'uid' && <FormControl onChange={props.handleChange} value={props.uidValue} name='uid'
                         placeholder="uid"
@@ -66,19 +63,7 @@ const SearchField = (props) => {
                 </InputGroup>
 
             </div>}
-        {type === 'bill' && // Supposed to show when we're looking at billsInformation-view, it's not yet implemented
-            <div>
-                <InputGroup>
-                    <FormControl onChange={props.handleChange} value={props.idValue} name='id' placeholder='user-id'
-                        placeholder="id"
-                        aria-label="id"
-                        aria-describedby="id"
-                    />
-                    <InputGroup.Append>
-                        <Button variant="outline-secondary" type='submit' value='Search' onClick={props.handleSubmit}>Search</Button>
-                    </InputGroup.Append>
-                </InputGroup>
-            </div>}
+
     </div>
     )
 }

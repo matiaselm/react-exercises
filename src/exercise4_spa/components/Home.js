@@ -1,19 +1,16 @@
-import React, { useContext } from 'react';
-import { UserProvider, UserContext, UserDispatchContext } from '../contexts/UserContext';
+import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 
 const Home = () => {
-    const user = useContext(UserContext)
-
     return (
         <Container fluid>
             <Row>
                 <Col xs={4}>
                     <Card >
-                        <Card.Img variant="top" src="https://i.imgur.com/60z35CR.png" />
+                        <Card.Img variant="top" src="https://i.imgur.com/zGDdDr6.png" />
 
                         <Card.Body>
                             <Card.Title >Matias Jalava</Card.Title>
@@ -26,21 +23,47 @@ const Home = () => {
                         </Card.Body>
                     </Card>
                 </Col>
-                <Col >
-                    <h1>Welcome</h1>
-                    <p>This is a simple project-website built with React</p>
-                    <h3>Front end:</h3>
-                    <ul>
-                        <li>React</li>
-                        <li>Bootsrap</li>
-                        <li>React-Router</li>
-                        <li>axios</li>
-                    </ul>
-                    <h3>Back-End:</h3>
-                    <ul>
-                        <li>express</li>
-                        <li>MongoDB/mongoose</li>
-                    </ul>
+                <Col xs={4}>
+                    <Card>
+                        <Card.Body>
+                            <h1>Welcome</h1>
+                            <p>This is a simple project-website built with React</p>
+                            <h3>Front end:</h3>
+                            <ul>
+                                <li>create-react-app</li>
+                                <li>React</li>
+                                <li>react-bootsrap</li>
+                                <li>react-router</li>
+                                <li>react-router-bootsrap</li>
+                                <li>axios</li>
+                            </ul>
+                            <h3>Back end:</h3>
+                            <ul>
+                                <li>Node.js</li>
+                                <li>nodemon</li>
+                                <li>express.js</li>
+                                <li>MongoDB</li>
+                                <li>mongoose</li>
+                                <li>body-parser</li>
+                                <li>express-validator</li>
+                                <li>mongoose-unique-validator</li>
+                            </ul>
+                        </Card.Body>
+                    </Card>
+                </Col>
+                <Col xs={4}>
+                    <Card>
+                        <Card.Body>
+
+                            <Card.Title >Sivun toiminnallisuus jäi uupumaan viimeiseen palautukseen. MM: </Card.Title><br></br>
+                            <Card.Text>Käyttäjien laskujen hallintaa ei ole ollenkaan sivulla, sillä en ehtinyt sitä rakentaa loppuun backendin puolella. <br></br><br></br>
+                            Sovellukseen myös jäi joitain bugeja, MM: <br></br><br></br>
+                                - Adminiksi käyttäjän muuttaminen lennossa ei päivitä käyttäjävalikon button-elementtejä.<br></br><br></br>
+                                - Navigation-valikon sisäkkäiset elementit herjaa yhteensopimattomuudesta
+                                </Card.Text>
+
+                        </Card.Body>
+                    </Card>
                 </Col>
             </Row>
         </Container>

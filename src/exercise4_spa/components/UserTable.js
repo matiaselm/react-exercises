@@ -1,13 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
-import BillInformation from './BillInformation';
 import SearchField from './SearchField';
 import axios from 'axios';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
 import { UserContext } from '../contexts/UserContext';
 import { ModifyForm } from './ModifyUser';
 
