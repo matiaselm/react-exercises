@@ -21,7 +21,6 @@ const UserTable = () => {
 
     const currentUser = useContext(UserContext);
     const [list, setList] = useState([])
-    const [user, setUser] = useState({})
     const [modifyMenu, setModifyMenu] = useState(false)
     const [userToModify, setUserToModify] = useState({})
 
@@ -57,6 +56,7 @@ const UserTable = () => {
         })
     }
 
+    // Used to modify a specific user
     const fetchUserById = (user) => {
         console.log('Fetching user ' + user.name + ' with id: ' + user._id)
         const searchTerm = 'http://localhost:5000/api/users/' + user._id
@@ -71,13 +71,7 @@ const UserTable = () => {
             })
     }
 
-    const hideModifyMenu = () => {
-        setModifyMenu(false)
-    }
-
     const fetchUsers = () => {
-
-        // let searchTerm = 'http://localhost:3003/people?'
         let searchTerm = 'http://localhost:5000/api/users'
 
         console.log('Fetchusers st: ' + searchTerm);
@@ -107,57 +101,61 @@ const UserTable = () => {
             });
     }
 
-    useEffect(() => fetchUsers(value), [])
+    useEffect(() => fetchUsers(), [modifyMenu])
 
-    const deleteUser = (user) => {
-        alert('Are you sure you want to delete user ' + user.name + '?');
-        console.log('Deleting user: ' + user.name);
+    // When delete button is pressed
+    const handleDelete = (user) => {
+        const url = 'http://localhost:5000/api/users/'
+
+        if (window.confirm('Are you sure you want to delete: ' + user.uid)) {
+            axios({
+                method: 'delete',
+                url: url + user._id
+            }).then((response) => {
+                return console.log('Deleted user: ' + user.uid)
+            }).catch(error => {
+                return console.log(error.response);
+            });
+        }
     }
-
 
     if (!Array.isArray(list)) {
         setList([list])
     }
 
-    // currentUser.admin &&
-
     try {
-        return (
-            <>
-                <SearchField type='user' clearValue={clearValue} handleChange={handleChange} handleSubmit={handleSubmit} uidValue={value.uid} phoneValue={value.phone} nameValue={value.name}></SearchField>
-                <Container>
-                    <Col>
-                        <Table>
-                            <tbody >
-                                <tr><th>Name</th><th>Uid</th><th>Address</th><th>Zip code</th><th>City</th><th>Phone</th></tr>
+        return (<>
+            <SearchField type='user' clearValue={clearValue} handleChange={handleChange} handleSubmit={handleSubmit} uidValue={value.uid} phoneValue={value.phone} nameValue={value.name}></SearchField>
+            <Container>
+                {modifyMenu && <ModifyForm className='br-3' hide={() => setModifyMenu(false)} user={userToModify}></ModifyForm>}
 
-                                {list.map((user, i) =>
-                                    <tr key={i}>
-                                        <td>{user.name}</td>
-                                        <td>{user.uid}</td>
-                                        <td>{user.address}</td>
-                                        <td>{user.postalnum}</td>
-                                        <td>{user.city}</td>
-                                        <td>{user.phonenum}</td>
-                                        {user.bills &&
-                                            <td><Button variant="outline-secondary" value='bills' onClick={() => console.log('Clicked on bill-button')}>Bills</Button></td>
-                                        }
-                                        {true && <>
-                                            <td><Button variant="outline-secondary" value='modify' onClick={() => fetchUserById(user)}>Modify</Button></td>
-                                            <td><Button variant="outline-danger" value='delete' onClick={() => deleteUser(user)}>Delete</Button></td>
-                                        </>}
-                                    </tr>
-                                )
-                                }
-                            </tbody>
-                        </Table>
-                    </Col>
-                    <Col>
-                        {modifyMenu && <ModifyForm hide={() => setModifyMenu(false)} user={userToModify}></ModifyForm>}
-                    </Col>
+                <Table>
+                    <tbody>
+                        <tr><th>Name</th><th>Uid</th><th>Address</th><th>Zip code</th><th>City</th><th>Phone</th><th>Modify</th><th>Delete</th><th>Bills</th></tr>
+                        {list.map((user, i) =>
+                            <tr key={i}>
+                                {user.admin ? <td style={{ color: 'red' }}>{user.name}</td> : <td>{user.name}</td>}
+                                <td>{user.uid}</td>
+                                <td>{user.address}</td>
+                                <td>{user.postalnum}</td>
+                                <td>{user.city}</td>
+                                <td>{user.phonenum}</td>
+                                {currentUser.admin || currentUser.uid === user.uid ? <>
+                                    <td><Button variant="outline-secondary" value='modify' onClick={() => fetchUserById(user)}>Modify</Button></td>
+                                    <td><Button variant="outline-danger" value='delete' onClick={() => handleDelete(user)}>Delete</Button></td>
+                                </> : <>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </>}
 
-                </Container>
-            </>
+                                {user.bills ? <td><Button variant="outline-secondary" value='bills' onClick={() => console.log('Clicked on bill-button')}>Bills</Button></td> : <td>-</td>}
+                            </tr>
+                        )
+                        }
+                    </tbody>
+                </Table>
+            </Container>
+        </>
         )
     } catch (e) {
         return (

@@ -11,19 +11,36 @@ const Home = () => {
     return (
         <Container fluid>
             <Row>
-                <Col>
-                    <Card style={{ width: '40ch' }} >
+                <Col xs={4}>
+                    <Card >
                         <Card.Img variant="top" src="https://i.imgur.com/60z35CR.png" />
 
                         <Card.Body>
                             <Card.Title >Matias Jalava</Card.Title>
                             <Card.Text>
-                                Second year student at Metropolia UAS.
-                                Big time fisher and a gamer.
+                                Second year student at Metropolia UAS. <br></br>
+                                Big time fisher and gamer. :') <br></br>
+                                Creator of this spaghetti-website
                         </Card.Text>
                             <Card.Link href="https://github.com/matiaselm">Github</Card.Link>
                         </Card.Body>
                     </Card>
+                </Col>
+                <Col >
+                    <h1>Welcome</h1>
+                    <p>This is a simple project-website built with React</p>
+                    <h3>Front end:</h3>
+                    <ul>
+                        <li>React</li>
+                        <li>Bootsrap</li>
+                        <li>React-Router</li>
+                        <li>axios</li>
+                    </ul>
+                    <h3>Back-End:</h3>
+                    <ul>
+                        <li>express</li>
+                        <li>MongoDB/mongoose</li>
+                    </ul>
                 </Col>
             </Row>
         </Container>

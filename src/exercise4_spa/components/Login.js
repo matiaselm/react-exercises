@@ -8,7 +8,6 @@ import Card from 'react-bootstrap/Card';
 import Nav from 'react-bootstrap/Nav';
 
 const Login = () => {
-    const userDetails = useContext(UserContext);
     const setUserDetails = useContext(UserDispatchContext);
 
     let url = 'http://localhost:5000/api/'

@@ -38,9 +38,10 @@ const SearchField = (props) => {
             < div >
 
                 <InputGroup className="mb-3">
-                    <InputGroup.Append>
-                        <Button variant="secondary" onClick={changeSearch}>Change search</Button>
-                    </InputGroup.Append>
+
+
+                    <Button style={{ marginRight: '1ch' }} variant="secondary" onClick={changeSearch}>Change search</Button>
+
 
                     {search === 'uid' && <FormControl onChange={props.handleChange} value={props.uidValue} name='uid'
                         placeholder="uid"
