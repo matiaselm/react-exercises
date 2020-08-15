@@ -55,13 +55,15 @@ const Home = () => {
                     <Card>
                         <Card.Body>
 
-                            <Card.Title >Sivun toiminnallisuus jäi uupumaan viimeiseen palautukseen. MM: </Card.Title><br></br>
+                            <Card.Title >Sivun toiminnallisuus jäi uupumaan viimeiseen palautukseen: </Card.Title><br></br>
                             <Card.Text>Käyttäjien laskujen hallintaa ei ole ollenkaan sivulla, sillä en ehtinyt sitä rakentaa loppuun backendin puolella. <br></br><br></br>
-                            Sovellukseen myös jäi joitain bugeja, MM: <br></br><br></br>
+                            Sovellukseen myös jäi joitain bugeja: <br></br><br></br>
                                 - Adminiksi käyttäjän muuttaminen lennossa ei päivitä käyttäjävalikon button-elementtejä.<br></br><br></br>
-                                - Navigation-valikon sisäkkäiset elementit herjaa yhteensopimattomuudesta
+                                - Navigation-valikon sisäkkäiset elementit herjaa yhteensopimattomuudesta<br></br><br></br>
+                                - Käyttäjän varmistaminen tokenilla unohtui.
+                                    Käyttäjä saa tokenin backendista ja se tallennetaan UserContextiin,
+                                    sitä ei vaan hyödynnetä eikä backend sitä pyyntöjen käsittelyssä vaadi
                                 </Card.Text>
-
                         </Card.Body>
                     </Card>
                 </Col>
